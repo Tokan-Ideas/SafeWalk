@@ -14,6 +14,9 @@
 		E78EB1252A4A5E1F001EC080 /* SafeWalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB1242A4A5E1F001EC080 /* SafeWalkTests.swift */; };
 		E78EB12F2A4A5E1F001EC080 /* SafeWalkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB12E2A4A5E1F001EC080 /* SafeWalkUITests.swift */; };
 		E78EB1312A4A5E1F001EC080 /* SafeWalkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB1302A4A5E1F001EC080 /* SafeWalkUITestsLaunchTests.swift */; };
+		E78EB13E2A4A600C001EC080 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB13D2A4A600C001EC080 /* LocationManager.swift */; };
+		E78EB13F2A4A600C001EC080 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB13D2A4A600C001EC080 /* LocationManager.swift */; };
+		E78EB1402A4A600C001EC080 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB13D2A4A600C001EC080 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,7 @@
 		E78EB12A2A4A5E1F001EC080 /* SafeWalkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SafeWalkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78EB12E2A4A5E1F001EC080 /* SafeWalkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeWalkUITests.swift; sourceTree = "<group>"; };
 		E78EB1302A4A5E1F001EC080 /* SafeWalkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeWalkUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E78EB13D2A4A600C001EC080 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 				E78EB1152A4A5E1D001EC080 /* ContentView.swift */,
 				E78EB1172A4A5E1E001EC080 /* Assets.xcassets */,
 				E78EB1192A4A5E1E001EC080 /* Preview Content */,
+				E78EB13D2A4A600C001EC080 /* LocationManager.swift */,
 			);
 			path = SafeWalk;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 			files = (
 				E78EB1162A4A5E1D001EC080 /* ContentView.swift in Sources */,
 				E78EB1142A4A5E1D001EC080 /* SafeWalkApp.swift in Sources */,
+				E78EB13E2A4A600C001EC080 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E78EB13F2A4A600C001EC080 /* LocationManager.swift in Sources */,
 				E78EB1252A4A5E1F001EC080 /* SafeWalkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +283,7 @@
 			files = (
 				E78EB1312A4A5E1F001EC080 /* SafeWalkUITestsLaunchTests.swift in Sources */,
 				E78EB12F2A4A5E1F001EC080 /* SafeWalkUITests.swift in Sources */,
+				E78EB1402A4A600C001EC080 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

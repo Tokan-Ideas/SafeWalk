@@ -7,18 +7,20 @@
 
 import CoreLocation
 
-class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
+class LocationManager: NSObject, ObservableObject {
     private let locationManager = CLLocationManager()
 
     @Published var lastKnownLocation: CLLocation? // Track the user's last known location
-
+    static let shared = LocationManager()    
     override init() {
         super.init()
         locationManager.delegate = self
+        //locationManager.requestAlwaysAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
-    
     
     @Published var isSuspiciousActivityNearby = false
     @Published var isCloseToSuspiciousActivity = false
@@ -27,12 +29,10 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     
     private var reportedSuspiciousActivityLocation: CLLocation? // Location of the reported suspicious activity
     
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            lastKnownLocation = location // Update the last known location
-            checkSuspiciousActivity(location: location)
-        }
+    func requestLocation() {
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     private func checkSuspiciousActivity(location: CLLocation) {
@@ -49,3 +49,56 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     }
 }
 
+extension LocationManager: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            lastKnownLocation = location // Update the last known location
+            checkSuspiciousActivity(location: location)
+        }
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+            case .notDetermined:
+                
+                print("ND")
+                break
+            case .restricted:
+                print("Restricted")
+                break
+            case .denied:
+                print("Denied")
+                break
+            case .authorizedAlways:
+                print("Always")
+                manager.startUpdatingLocation()
+                break
+            case .authorizedWhenInUse:
+                print("When In Use")
+                manager.startUpdatingLocation()
+                break
+            @unknown default:
+                print("FUCKED UP")
+        }
+    }
+//    func locationMan {
+//        switch status {
+//        case .notDetermined:
+//            print("ND")
+//            
+//        case .restricted:
+//            print("Restricted")
+//            
+//        case .denied:
+//            print("Denied")
+//            
+//        case .authorizedAlways:
+//            print("Always")
+//            
+//        case .authorizedWhenInUse:
+//            print("When In Use")
+//            
+//        }
+    
+}

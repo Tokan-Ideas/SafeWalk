@@ -11,24 +11,29 @@ import MapKit
 struct ContentView: View {
     @StateObject private var locationManager = LocationManager() // Change to @StateObject
 
-    @State private var isTrackingEnabled = false
+    @State private var isTrackingEnabled = true
 
     var body: some View {
-        VStack {
-            Toggle("Enable Location Tracking", isOn: $isTrackingEnabled)
-                .padding()
-
-            if isTrackingEnabled {
-                MapView()
-                    .environmentObject(locationManager) // Add this line
-                SuspiciousActivityAlert()
-                    .environmentObject(locationManager) // Add this line
-            } else {
-                Text("Location Tracking is Disabled")
-                    .font(.headline)
-                    .padding()
-            }
-        }
+        MapView()
+            .environmentObject(locationManager)
+            .onAppear(perform: {
+                locationManager.requestLocation()
+            })// Add this line
+//        `VStack {
+//            Toggle("Enable Location Tracking", isOn: $isTrackingEnabled)
+//                .padding()
+//
+//            if isTrackingEnabled {
+//                MapView()
+//                    .environmentObject(locationManager) // Add this line
+//                SuspiciousActivityAlert()
+//                    .environmentObject(locationManager) // Add this line
+//            } else {
+//                Text("Location Tracking is Disabled")
+//                    .font(.headline)
+//                    .padding()
+//            }
+//        }`
     }
 }
 
@@ -74,23 +79,27 @@ struct SuspiciousActivityAlert: View {
 
 struct MapView: View {
     @EnvironmentObject private var locationManager: LocationManager
+    @State var tracking: MapUserTrackingMode = .follow
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
 
     var body: some View {
-        Map(coordinateRegion: $region, showsUserLocation: true) // Add showsUserLocation parameter
-            .ignoresSafeArea(edges: .all)
-            .onAppear {
-                setRegion() // Update the region when the map appears
-            }
-            .onChange(of: locationManager.lastKnownLocation) { location in
-                guard let location = location else { return }
-                setRegion(location: location) // Update the region when the location changes
-            }
+        Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: $tracking) // Add showsUserLocation parameter
+                .ignoresSafeArea(edges: .all)
+                .onAppear {
+                    setRegion(location: LocationManager.shared.lastKnownLocation)
+//
+                    //setRegion() // Update the region when the map appears
+                }
+                .onChange(of: locationManager.lastKnownLocation) { location in
+                    guard let location = location else { return }
+                    setRegion(location: location) // Update the region when the location changes
+                }
+        
     }
 
     private func setRegion(location: CLLocation? = nil) {
-        if let location = location {
-            region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+        if location == nil {
+            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
         } else if let userLocation = locationManager.lastKnownLocation {
             region = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
         }

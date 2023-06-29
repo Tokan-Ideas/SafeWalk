@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		227FD3082A4D1CB00026450C /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FD3072A4D1CB00026450C /* ReportView.swift */; };
 		E78EB1142A4A5E1D001EC080 /* SafeWalkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB1132A4A5E1D001EC080 /* SafeWalkApp.swift */; };
 		E78EB1162A4A5E1D001EC080 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB1152A4A5E1D001EC080 /* ContentView.swift */; };
 		E78EB1182A4A5E1E001EC080 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78EB1172A4A5E1E001EC080 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		227FD3072A4D1CB00026450C /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		E78EB1102A4A5E1D001EC080 /* SafeWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78EB1132A4A5E1D001EC080 /* SafeWalkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeWalkApp.swift; sourceTree = "<group>"; };
 		E78EB1152A4A5E1D001EC080 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				E78EB1132A4A5E1D001EC080 /* SafeWalkApp.swift */,
 				E78EB1152A4A5E1D001EC080 /* ContentView.swift */,
+				227FD3072A4D1CB00026450C /* ReportView.swift */,
 				E78EB1172A4A5E1E001EC080 /* Assets.xcassets */,
 				E78EB1192A4A5E1E001EC080 /* Preview Content */,
 				E78EB13D2A4A600C001EC080 /* LocationManager.swift */,
@@ -278,6 +281,7 @@
 			files = (
 				E78EB1162A4A5E1D001EC080 /* ContentView.swift in Sources */,
 				E78EB1142A4A5E1D001EC080 /* SafeWalkApp.swift in Sources */,
+				227FD3082A4D1CB00026450C /* ReportView.swift in Sources */,
 				E78EB13E2A4A600C001EC080 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

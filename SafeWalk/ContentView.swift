@@ -93,10 +93,10 @@ struct MapView: View {
                         print(location)
                     }
                     
-//                    print(LocationManager.shared.lastKnownLocation)
+                    print(LocationManager.shared.lastKnownLocation)
                     print(locationManager.lastKnownLocation)
-//
-                    setRegion() // Update the region when the map appears
+////
+//                    setRegion() // Update the region when the map appears
                 }
                 .onChange(of: locationManager.lastKnownLocation) { location in
                     guard let location = location else { return }
@@ -145,9 +145,16 @@ struct MapView: View {
                             print("Recenter")
                             LocationManager.shared.requestLocation { location in
                                 setRegion(location: location)
-                                print(location)
+                                //print(location)
                             }
                             
+                            locationManager.requestLocation { location in
+                                setRegion(location: locationManager.lastKnownLocation)
+                                print(locationManager.lastKnownLocation)
+                            }
+                            
+                            setRegion(location: locationManager.lastKnownLocation)
+                            //print(locationManager.lastKnownLocation)
                             
                             
                             
@@ -167,6 +174,7 @@ struct MapView: View {
     }
 
     private func setRegion(location: CLLocation? = nil) {
+        //print(location)
         if location == nil {
             region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         } else if let userLocation = location {

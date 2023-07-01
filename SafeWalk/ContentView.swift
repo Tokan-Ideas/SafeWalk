@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import UIKit
 import MapKit
 
 struct ContentView: View {
-    @StateObject private var locationManager = LocationManager() // Change to @StateObject
+    @StateObject var locationManager = LocationManager() // Change to @StateObject
 
     @State private var isTrackingEnabled = true
 
@@ -17,8 +18,8 @@ struct ContentView: View {
         MapView()
             .environmentObject(locationManager)
             .onAppear(perform: {
-                locationManager.requestLocation()
-            })// Add this line
+                
+            })// Add this line {
 //        `VStack {
 //            Toggle("Enable Location Tracking", isOn: $isTrackingEnabled)
 //                .padding()
@@ -43,52 +44,59 @@ struct SuspiciousActivityAlert: View {
 
     var body: some View {
         VStack {
-            if locationManager.isSuspiciousActivityNearby {
-                Text("Suspicious Activity Reported Nearby!")
-                    .font(.headline)
-                    .padding()
-
-                if locationManager.isCloseToSuspiciousActivity {
-                    Text("Confirm if activity is still present:")
-                        .font(.subheadline)
-                        .padding()
-
-                    Button("Yes") {
-                        // Handle confirmation logic when suspicious activity is confirmed
-                    }
-                    .padding()
-                    .foregroundColor(.green)
-
-                    Button("No") {
-                        // Handle confirmation logic when suspicious activity is not present
-                    }
-                    .padding()
-                    .foregroundColor(.red)
-                }
-            }
+//            if locationManager.isSuspiciousActivityNearby {
+//                Text("Suspicious Activity Reported Nearby!")
+//                    .font(.headline)
+//                    .padding()
+//
+//                if locationManager.isCloseToSuspiciousActivity {
+//                    Text("Confirm if activity is still present:")
+//                        .font(.subheadline)
+//                        .padding()
+//
+//                    Button("Yes") {
+//                        // Handle confirmation logic when suspicious activity is confirmed
+//                    }
+//                    .padding()
+//                    .foregroundColor(.green)
+//
+//                    Button("No") {
+//                        // Handle confirmation logic when suspicious activity is not present
+//                    }
+//                    .padding()
+//                    .foregroundColor(.red)
+//                }
+//            }
         }
         .padding()
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Suspicious Activity Reported"), message: Text("Please be cautious and confirm if the activity is still present."), dismissButton: .default(Text("OK")))
         }
-        .onReceive(locationManager.$isSuspiciousActivityNearby) { isSuspiciousActivityNearby in
-            showAlert = isSuspiciousActivityNearby
-        }
+//        .onReceive(locationManager.$isSuspiciousActivityNearby) { isSuspiciousActivityNearby in
+//            showAlert = isSuspiciousActivityNearby
+//        }
     }
 }
 
 struct MapView: View {
     @EnvironmentObject private var locationManager: LocationManager
     @State var tracking: MapUserTrackingMode = .follow
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    @State private var showAddReport = false
 
     var body: some View {
         Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $tracking) // Add showsUserLocation parameter
                 .ignoresSafeArea(.all)
                 .onAppear {
-                    setRegion(location: LocationManager.shared.lastKnownLocation)
-//
-                    //setRegion() // Update the region when the map appears
+                    locationManager.requestLocation() { location in
+                        setRegion(location: location)
+                        print(location)
+                    }
+                    
+                    print(LocationManager.shared.lastKnownLocation)
+                    print(locationManager.lastKnownLocation)
+////
+//                    setRegion() // Update the region when the map appears
                 }
                 .onChange(of: locationManager.lastKnownLocation) { location in
                     guard let location = location else { return }
@@ -106,8 +114,11 @@ struct MapView: View {
                         .buttonBorderShape(.capsule)
                         Spacer()
                         Button("Report") {
-                            print("Report Pressed")
+                            showAddReport.toggle()
                         }
+                        .fullScreenCover(isPresented: $showAddReport, content: {
+                            ReportView()
+                        })
                         //                    } label: {
                         //                        
                         //                    }
@@ -128,10 +139,25 @@ struct MapView: View {
 //                                Image(systemName: "bell.fill")
 //                            }
 //                        }
+                        
+                    
                         Button {
-                            print("Left Pressed")
-                            locationManager.requestLocation()
+                            print("Recenter")
+                            LocationManager.shared.requestLocation { location in
+                                setRegion(location: location)
+                                //print(location)
+                            }
+                            
+                            locationManager.requestLocation { location in
+                                setRegion(location: locationManager.lastKnownLocation)
+                                print(locationManager.lastKnownLocation)
+                            }
+                            
                             setRegion(location: locationManager.lastKnownLocation)
+                            //print(locationManager.lastKnownLocation)
+                            
+                            
+                            
                         } label: {
                             Image(systemName: "location.fill")
                         }
@@ -143,18 +169,16 @@ struct MapView: View {
                 }
                 
 //                .mapControlVisibility(.visible)
-        
-                Spacer()
-                
                 
         
     }
 
     private func setRegion(location: CLLocation? = nil) {
+        //print(location)
         if location == nil {
-            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-        } else if let userLocation = locationManager.lastKnownLocation {
-            region = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        } else if let userLocation = location {
+            region = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         }
     }
 }
@@ -166,5 +190,16 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-
-
+//struct LocationButton: UIViewRepresentable {
+//    func updateUIView(_ uiView: MKUserTrackingButton, context: Context) {
+//        print("FUCK")
+//    }
+//    
+//    func makeUIView(context: Context) -> MKUserTrackingButton {
+//
+//            return MKUserTrackingButton()
+//        }
+//}
+//
+//
+//

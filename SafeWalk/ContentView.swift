@@ -105,20 +105,20 @@ struct MapView: View {
                 }
                 .overlay(alignment: .topLeading) {
                     HStack(spacing: 20) {
-                        Button {
-                            showAddNotification.toggle()
-                        }
-                        label: {
-                            Image(systemName: "bell.fill")
-                        }
-                        .fullScreenCover(isPresented: $showAddNotification, content:
-                            {
-                            NotificationView()
-                               // .navigationTitle("Notifications")
-                        })
-                        
-                        .buttonStyle(.borderedProminent)
-                        .buttonBorderShape(.capsule)
+//                        Button {
+//                            showAddNotification.toggle()
+//                        }
+//                        label: {
+//                            Image(systemName: "bell.fill")
+//                        }
+//                        .fullScreenCover(isPresented: $showAddNotification, content:
+//                            {
+//                            NotificationView()
+//                               // .navigationTitle("Notifications")
+//                        })
+//                        
+//                        .buttonStyle(.borderedProminent)
+//                        .buttonBorderShape(.capsule)
                         Spacer()
                         Button("Report") {
                             showAddReport.toggle()

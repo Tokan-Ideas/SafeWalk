@@ -81,8 +81,9 @@ struct SuspiciousActivityAlert: View {
 struct MapView: View {
     @EnvironmentObject private var locationManager: LocationManager
     @State var tracking: MapUserTrackingMode = .follow
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0024))
     @State private var showAddReport = false
+    @State private var showAddNotification = false
 
     var body: some View {
         Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $tracking) // Add showsUserLocation parameter
@@ -105,11 +106,17 @@ struct MapView: View {
                 .overlay(alignment: .topLeading) {
                     HStack(spacing: 20) {
                         Button {
-                            print("Recent Alerts")
-                            
-                        } label: {
+                            showAddNotification.toggle()
+                        }
+                        label: {
                             Image(systemName: "bell.fill")
                         }
+                        .fullScreenCover(isPresented: $showAddNotification, content:
+                            {
+                            NotificationView()
+                               // .navigationTitle("Notifications")
+                        })
+                        
                         .buttonStyle(.borderedProminent)
                         .buttonBorderShape(.capsule)
                         Spacer()
@@ -176,9 +183,9 @@ struct MapView: View {
     private func setRegion(location: CLLocation? = nil) {
         //print(location)
         if location == nil {
-            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0025))
         } else if let userLocation = location {
-            region = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            region = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0025))
         }
     }
 }

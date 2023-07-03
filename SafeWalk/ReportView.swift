@@ -10,6 +10,9 @@ import SwiftUI
 struct ReportView: View {
     @Environment(\.dismiss) var dismiss
     var body: some View {
+        HStack(alignment: .center) {
+            Text("Update Map").font(.title).fontWeight(.heavy)
+        }
         VStack(alignment: .center, content: {
             Spacer()
             HStack(content: {

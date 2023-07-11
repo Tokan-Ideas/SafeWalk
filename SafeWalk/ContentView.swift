@@ -93,15 +93,16 @@ struct MapView: View {
                         setRegion(location: location)
                         print(location)
                     }
-                    
-                    print(LocationManager.shared.lastKnownLocation)
-                    print(locationManager.lastKnownLocation)
+                    print(self.region)
+                    //print(LocationManager.shared.lastKnownLocation)
+                    //print(locationManager.lastKnownLocation)
 ////
 //                    setRegion() // Update the region when the map appears
                 }
                 .onChange(of: locationManager.lastKnownLocation) { location in
                     guard let location = location else { return }
                     setRegion(location: location) // Update the region when the location changes
+                    
                 }
                 .overlay(alignment: .topLeading) {
                     HStack(spacing: 20) {
@@ -174,6 +175,7 @@ struct MapView: View {
                     
                     .padding()
                 }
+                
                 
 //                .mapControlVisibility(.visible)
                 

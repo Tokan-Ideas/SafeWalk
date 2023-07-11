@@ -20,19 +20,27 @@ struct ReportView: View {
                 Button {
                     print("Police")
                 } label: {
-                    Image("ReportView_Police")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100, alignment: .center)
+                    VStack() {
+                        Image("ReportView_Police")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100, alignment: .center)
+                        Text("Police")
+                            .font(.subheadline)
+                    }
                 }
                 Spacer()
                 Button {
                     print("No Lights")
                 } label: {
-                    Image("ReportView_NoLights")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100, alignment: .center)
+                    VStack {
+                        Image("ReportView_NoLights")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100, alignment: .center)
+                        Text("No Street Lights")
+                            .font(.subheadline)
+                    }
                 }
                 Spacer()
                 
@@ -42,21 +50,29 @@ struct ReportView: View {
             HStack(content: {
                 Spacer()
                 Button {
-                    print("No Sidewalk")
+                    print("Suspicious Activity")
                 } label: {
-                    Image("ReportView_NoSidewalk")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100, alignment: .center)
+                    VStack {
+                        Image("ReportView_Suspicious")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100, alignment: .center)
+                        Text("Suspicious Activity")
+                            .font(.subheadline)
+                    }
                 }
                 Spacer()
                 Button {
                     print("Construction")
                 } label: {
-                    Image("ReportView_Construction")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100, alignment: .center)
+                    VStack {
+                        Image("ReportView_Construction")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100, alignment: .center)
+                        Text("Construction")
+                            .font(.subheadline)
+                    }
                 }
                 Spacer()
             })
@@ -66,10 +82,13 @@ struct ReportView: View {
                 Button {
                     print("Busy Area")
                 } label: {
-                    Image("ReportView_Crowded")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100, alignment: .center)
+                    VStack {
+                        Image("ReportView_Crowded")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100, alignment: .center)
+                        Text("High Foot Traffic")
+                    }
                 }
                 Spacer()
     

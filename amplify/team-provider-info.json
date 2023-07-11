@@ -1,0 +1,15 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-safewalk-staging-14416-authRole",
+      "UnauthRoleArn": "arn:aws:iam::629686010206:role/amplify-safewalk-staging-14416-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::629686010206:role/amplify-safewalk-staging-14416-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-safewalk-staging-14416-deployment",
+      "UnauthRoleName": "amplify-safewalk-staging-14416-unauthRole",
+      "StackName": "amplify-safewalk-staging-14416",
+      "StackId": "arn:aws:cloudformation:us-east-1:629686010206:stack/amplify-safewalk-staging-14416/725ffd80-1f8c-11ee-942d-12558160ed75",
+      "AmplifyAppId": "dh9ur67q4gtxy"
+    }
+  }
+}

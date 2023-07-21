@@ -16,10 +16,15 @@ struct ContentView: View {
     @State private var isTrackingEnabled = true
 
     var body: some View {
-        MapView()
+        mapView
             .environmentObject(locationManager)
             .onAppear(perform: {
-                
+                LocationManager.shared.requestLocation() { location in
+                    LocationManager.shared.lastKnownLocation = location
+                    locationManager.lastKnownLocation = location
+                    
+                }
+                print(LocationManager.shared.lastKnownLocation)
             })
     }
 }

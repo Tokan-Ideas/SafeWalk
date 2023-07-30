@@ -9,30 +9,45 @@ import Foundation
 import SwiftUI
 import UIKit
 import MapKit
-
+import Amplify
+import Combine
 
 struct MapView: View {
+
+    @State var centerCoordinate: CLLocationCoordinate2D?
+    @State var annotations: [MKPointAnnotation] = []
+    @State var reports: [Report]?
     @EnvironmentObject private var locationManager: LocationManager
     @State var tracking: MapUserTrackingMode = .follow
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0024))
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0025))
     @State private var showAddReport = false
     @State private var showAddNotification = false
-
+    @State var reportSupscription: AnyCancellable?
+    
     var body: some View {
-        Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $tracking) // Add showsUserLocation parameter
+        Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: $tracking, annotationItems: annotations) {
+            annotation in
+            MapMarker(coordinate: annotation.coordinate)
+        } // Add showsUserLocation parameter
                 .ignoresSafeArea(.all)
                 .onAppear {
-                    locationManager.requestLocation() { location in
+                    updateAnnotations(with: region.center)
+                    //print(LocationManager.shared.lastKnownLocation)
+                    
+                    LocationManager.shared.requestLocation() { location in
                         setRegion(location: location)
                         print(location)
+                        updateAnnotations(with: region.center)
                     }
+                    setRegion(location: LocationManager.shared.lastKnownLocation)
                     
-                    print(LocationManager.shared.lastKnownLocation)
-                    print(locationManager.lastKnownLocation)
+                    
                 }
-                .onChange(of: locationManager.lastKnownLocation) { location in
-                    guard let location = location else { return }
-                    setRegion(location: location) // Update the region when the location changes
+                .onChange(of: region) { newRegion in
+                    let location = newRegion.center
+                    setRegion(location: location)
+                    updateAnnotations(with: location)
+                    //setRegion(location: location) // Update the region when the location changes
                 }
                 .overlay(alignment: .topLeading) {
                     HStack(spacing: 20) {
@@ -55,16 +70,10 @@ struct MapView: View {
                             print("Recenter")
                             LocationManager.shared.requestLocation { location in
                                 setRegion(location: location)
+                                print(location)
                             }
-                            
-                            locationManager.requestLocation { location in
-                                setRegion(location: locationManager.lastKnownLocation)
-                                print(locationManager.lastKnownLocation)
-                            }
-                            
-                            setRegion(location: locationManager.lastKnownLocation)
-                                                    
-                            
+                            setRegion(location: LocationManager.shared.lastKnownLocation)
+                           
                         } label: {
                             Image(systemName: "location.fill")
                         }
@@ -74,8 +83,45 @@ struct MapView: View {
                     .padding()
                 }
         
+        
     }
-
+    
+    func updateAnnotations(with coordinate: CLLocationCoordinate2D) {
+            // Here, you can perform any logic to fetch or update the annotations
+            // based on the new map center (coordinate)
+            
+            // For example, let's add a random annotation to demonstrate
+            let reports = Report.keys
+            self.reportSupscription = Amplify.Publisher.create(
+                Amplify.DataStore.observeQuery(
+                    for: Report.self,
+                    where: reports.longitude > coordinate.longitude + 0.005 && reports.longitude < coordinate.longitude - 0.005
+                    && reports.latitude < coordinate.latitude + 0.005 && reports.latitude > coordinate.latitude - 0.005
+                )
+            )
+            .sink {
+                if case .failure(let error) = $0 {
+                    print("Error \(error)")
+                }
+            } receiveValue: { querySnapshot in
+                print("[Snapshot] item count: \(querySnapshot.items.count), isSynced: \(querySnapshot.isSynced)")
+                //print(querySnapshot.items)
+                self.annotations = []
+                querySnapshot.items.forEach() { report in
+                    let randomAnnotation = MKPointAnnotation()
+                    randomAnnotation.coordinate.latitude = CLLocationDegrees(Double(report.latitude!)!)
+                    randomAnnotation.coordinate.longitude = CLLocationDegrees(Double(report.longitude!)!)
+                    
+                    self.annotations.append(randomAnnotation)
+                    
+                }
+                print(annotations)
+                
+                //annotations = [randomAnnotation]
+            }
+    }
+    
+   
     private func setRegion(location: CLLocation? = nil) {
         if location == nil {
             region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0025))
@@ -83,4 +129,29 @@ struct MapView: View {
             region = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0025))
         }
     }
+    
+    private func setRegion(location: CLLocationCoordinate2D) {
+        region = MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0025))
+     
+    }
 }
+
+extension CLLocationCoordinate2D: Equatable {
+    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+    }
+}
+
+extension MKCoordinateSpan: Equatable {
+    public static func == (lhs: MKCoordinateSpan, rhs: MKCoordinateSpan) -> Bool {
+        lhs.latitudeDelta == rhs.latitudeDelta && lhs.longitudeDelta == rhs.longitudeDelta
+    }
+}
+
+extension MKCoordinateRegion: Equatable {
+    public static func == (lhs: MKCoordinateRegion, rhs: MKCoordinateRegion) -> Bool {
+        lhs.center == rhs.center && lhs.span == rhs.span
+    }
+}
+
+extension MKPointAnnotation: Identifiable { }

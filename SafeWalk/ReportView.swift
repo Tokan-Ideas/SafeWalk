@@ -124,8 +124,9 @@ struct ReportView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 100, height: 100, alignment: .center)
-                        Text("Construction/Closed Sidewalk")
+                        Text("Closed Sidewalk")
                             .font(.subheadline)
+                            
                     }
                 }
                 Spacer()

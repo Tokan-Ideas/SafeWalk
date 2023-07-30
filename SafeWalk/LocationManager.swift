@@ -49,7 +49,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         guard let location = locations.last else {return}
         //completion?(location)
         self.lastKnownLocation = location
-        print(location)
+        //print(location)
         LocationManager.shared.lastKnownLocation = location
         //manager.stopUpdatingLocation()
     }

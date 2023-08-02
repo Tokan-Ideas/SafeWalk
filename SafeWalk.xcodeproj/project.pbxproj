@@ -17,6 +17,7 @@
 		22150E442A5CFB1400C417E1 /* AWSPredictionsPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 22150E432A5CFB1400C417E1 /* AWSPredictionsPlugin */; };
 		22150E462A5CFB1400C417E1 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 22150E452A5CFB1400C417E1 /* AWSS3StoragePlugin */; };
 		22150E482A5CFB1400C417E1 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 22150E472A5CFB1400C417E1 /* Amplify */; };
+		22179CA92A76D41900F5EC29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22179CA82A76D41900F5EC29 /* AppDelegate.swift */; };
 		2255E5EC2A6466B400B3B671 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2255E5E92A6466B400B3B671 /* MapView.swift */; };
 		2255E5ED2A6466B400B3B671 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2255E5EB2A6466B400B3B671 /* MapViewController.swift */; };
 		227FD3082A4D1CB00026450C /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FD3072A4D1CB00026450C /* ReportView.swift */; };
@@ -68,6 +69,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		22179CA62A76D36C00F5EC29 /* SafeWalk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SafeWalk.entitlements; sourceTree = "<group>"; };
+		22179CA72A76D38300F5EC29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		22179CA82A76D41900F5EC29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22447B00BBC108F56EBB60C0 /* Report+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Report+Schema.swift"; path = "amplify/generated/models/Report+Schema.swift"; sourceTree = "<group>"; };
 		2255E5E92A6466B400B3B671 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		2255E5EB2A6466B400B3B671 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 		E78EB1072A4A5E1D001EC080 = {
 			isa = PBXGroup;
 			children = (
+				22179CA82A76D41900F5EC29 /* AppDelegate.swift */,
 				E78EB1122A4A5E1D001EC080 /* SafeWalk */,
 				E78EB1232A4A5E1F001EC080 /* SafeWalkTests */,
 				E78EB12D2A4A5E1F001EC080 /* SafeWalkUITests */,
@@ -176,6 +181,8 @@
 		E78EB1122A4A5E1D001EC080 /* SafeWalk */ = {
 			isa = PBXGroup;
 			children = (
+				22179CA72A76D38300F5EC29 /* Info.plist */,
+				22179CA62A76D36C00F5EC29 /* SafeWalk.entitlements */,
 				E78EB1132A4A5E1D001EC080 /* SafeWalkApp.swift */,
 				E78EB1152A4A5E1D001EC080 /* ContentView.swift */,
 				2255E5EA2A6466B400B3B671 /* Controllers */,
@@ -361,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22179CA92A76D41900F5EC29 /* AppDelegate.swift in Sources */,
 				E78EB1162A4A5E1D001EC080 /* ContentView.swift in Sources */,
 				E78EB1142A4A5E1D001EC080 /* SafeWalkApp.swift in Sources */,
 				227FD3082A4D1CB00026450C /* ReportView.swift in Sources */,
@@ -529,12 +537,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SafeWalk/SafeWalk.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SafeWalk/Preview Content\"";
 				DEVELOPMENT_TEAM = BFWG73R2SW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SafeWalk/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please allow use to access your location";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please allow use to access your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow use to access your location";
@@ -564,12 +574,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SafeWalk/SafeWalk.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SafeWalk/Preview Content\"";
 				DEVELOPMENT_TEAM = BFWG73R2SW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SafeWalk/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please allow use to access your location";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please allow use to access your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow use to access your location";

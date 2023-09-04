@@ -14,20 +14,28 @@ import Combine
 
 struct MapView: View {
 
+    
     @State var centerCoordinate: CLLocationCoordinate2D?
-    @State var annotations: [MKPointAnnotation] = []
+    @State var annotations: [ReportAnnotation] = []
     @State var reports: [Report]?
     @EnvironmentObject private var locationManager: LocationManager
     @State var tracking: MapUserTrackingMode = .follow
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0025))
+    @State private var region = MKCoordinateRegion(center: LocationManager.shared.lastKnownLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 37.3346, longitude: -122.0090), span: MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0025))
     @State private var showAddReport = false
     @State private var showAddNotification = false
     @State var reportSupscription: AnyCancellable?
     
     var body: some View {
-        Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: $tracking, annotationItems: annotations) {
+
+    
+        Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $tracking, annotationItems: annotations) {
             annotation in
-            MapMarker(coordinate: annotation.coordinate)
+            MapAnnotation(coordinate: annotation.coordinate) {
+                AnnotationView(reportType: annotation.reportType, reportId: annotation.reportId, coordinates: annotation.coordinate, report: annotation.report)
+                    .onDisappear(){
+                        updateAnnotations(with: region.center)
+                    }
+            }
         } // Add showsUserLocation parameter
                 .ignoresSafeArea(.all)
                 .onAppear {
@@ -56,10 +64,12 @@ struct MapView: View {
                             showAddReport.toggle()
                         }
                         .fullScreenCover(isPresented: $showAddReport, content: {
-                            ReportView()
+
+                            ReportView(coordinates: region.center, reports: self.reports)
                         })
                         .buttonStyle(.borderedProminent)
                         .buttonBorderShape(.capsule)
+                        .controlSize(.large)
                     }
                     .padding()
                 }
@@ -76,14 +86,17 @@ struct MapView: View {
                            
                         } label: {
                             Image(systemName: "location.fill")
+
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 30, height: 30)
+                                
                         }
                         .buttonBorderShape(.capsule)
                     }
                     
                     .padding()
                 }
-        
-        
     }
     
     func updateAnnotations(with coordinate: CLLocationCoordinate2D) {
@@ -97,6 +110,7 @@ struct MapView: View {
                     for: Report.self,
                     where: reports.longitude > coordinate.longitude + 0.005 && reports.longitude < coordinate.longitude - 0.005
                     && reports.latitude < coordinate.latitude + 0.005 && reports.latitude > coordinate.latitude - 0.005
+                    && reports.negatedCounter < 2
                 )
             )
             .sink {
@@ -108,16 +122,31 @@ struct MapView: View {
                 //print(querySnapshot.items)
                 self.annotations = []
                 querySnapshot.items.forEach() { report in
-                    let randomAnnotation = MKPointAnnotation()
-                    randomAnnotation.coordinate.latitude = CLLocationDegrees(Double(report.latitude!)!)
-                    randomAnnotation.coordinate.longitude = CLLocationDegrees(Double(report.longitude!)!)
+
+
+                    //annote.$region = MKCoord
+                    let pin = ReportAnnotation(
+                        reportType: report.reportType!,
+                        reportId: report.id,
+                        coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(Double(report.latitude!)!), longitude: CLLocationDegrees(Double(report.longitude!)!)),
+                        report: report
+                    )
+//                    pin.reportTye = report.reportType
+//                    pin.reportId = report.id
+//                    pin.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(Double(report.latitude!)!), longitude: CLLocationDegrees(Double(report.longitude!)!))
                     
-                    self.annotations.append(randomAnnotation)
+//                    let randomAnnotation = MKPointAnnotation()
+//                    randomAnnotation.coordinate.latitude = CLLocationDegrees(Double(report.latitude!)!)
+//                    randomAnnotation.coordinate.longitude = CLLocationDegrees(Double(report.longitude!)!)
+                    
+                    self.annotations.append(pin)
                     
                 }
-                print(annotations)
+                self.reports = querySnapshot.items
+                //print(annotations)
                 
                 //annotations = [randomAnnotation]
+                //reportSupscription?.cancel()
             }
     }
     
@@ -125,6 +154,7 @@ struct MapView: View {
     private func setRegion(location: CLLocation? = nil) {
         if location == nil {
             region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3317, longitude: -122.0307), span: MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0025))
+
         } else if let userLocation = location {
             region = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0025))
         }
@@ -132,7 +162,7 @@ struct MapView: View {
     
     private func setRegion(location: CLLocationCoordinate2D) {
         region = MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0025))
-     
+
     }
 }
 

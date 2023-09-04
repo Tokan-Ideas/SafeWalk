@@ -1,0 +1,21 @@
+{
+    "appName": "safewalk",
+    "roleName": "pinpointLambdaRoledeaf7079",
+    "cloudformationPolicyName": "cloudformationPolicydeaf7079",
+    "cloudWatchPolicyName": "cloudWatchPolicydeaf7079",
+    "pinpointPolicyName": "pinpointPolicydeaf7079",
+    "authPolicyName": "pinpoint_amplify_deaf7079",
+    "unauthPolicyName": "pinpoint_amplify_deaf7079",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

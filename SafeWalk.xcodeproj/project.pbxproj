@@ -1,0 +1,799 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1695C6EB62E806933DF2A97C /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 3345C350CE7D4BB59832C4A4 /* amplifyconfiguration.json */; };
+		22150E382A5CFB1400C417E1 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 22150E372A5CFB1400C417E1 /* AWSAPIPlugin */; };
+		22150E3A2A5CFB1400C417E1 /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 22150E392A5CFB1400C417E1 /* AWSDataStorePlugin */; };
+		22150E3C2A5CFB1400C417E1 /* AWSLocationGeoPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 22150E3B2A5CFB1400C417E1 /* AWSLocationGeoPlugin */; };
+		22150E3E2A5CFB1400C417E1 /* AWSPinpointAnalyticsPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 22150E3D2A5CFB1400C417E1 /* AWSPinpointAnalyticsPlugin */; };
+		22150E402A5CFB1400C417E1 /* AWSPinpointPushNotificationsPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 22150E3F2A5CFB1400C417E1 /* AWSPinpointPushNotificationsPlugin */; };
+		22150E422A5CFB1400C417E1 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 22150E412A5CFB1400C417E1 /* AWSPluginsCore */; };
+		22150E442A5CFB1400C417E1 /* AWSPredictionsPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 22150E432A5CFB1400C417E1 /* AWSPredictionsPlugin */; };
+		22150E462A5CFB1400C417E1 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 22150E452A5CFB1400C417E1 /* AWSS3StoragePlugin */; };
+		22150E482A5CFB1400C417E1 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 22150E472A5CFB1400C417E1 /* Amplify */; };
+		22179CA92A76D41900F5EC29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22179CA82A76D41900F5EC29 /* AppDelegate.swift */; };
+		2255E5EC2A6466B400B3B671 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2255E5E92A6466B400B3B671 /* MapView.swift */; };
+		2255E5ED2A6466B400B3B671 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2255E5EB2A6466B400B3B671 /* MapViewController.swift */; };
+		227FD3082A4D1CB00026450C /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FD3072A4D1CB00026450C /* ReportView.swift */; };
+		227FD30A2A50FC990026450C /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FD3092A50FC980026450C /* NotificationView.swift */; };
+		22ED18512AA3B67C00C027FA /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED18502AA3B67C00C027FA /* AnnotationView.swift */; };
+		22ED18532AA43FB600C027FA /* UpdateReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED18522AA43FB600C027FA /* UpdateReportView.swift */; };
+		22ED18552AA6442400C027FA /* BannerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED18542AA6442400C027FA /* BannerModifier.swift */; };
+		8C69D96B3BE74AB7174EA2F4 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 26075034310343C17896EC69 /* awsconfiguration.json */; };
+		B7CFA844CEC775E7F203B3CE /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BC8C477D91745CDDE522B3 /* Report.swift */; };
+		DAB2CEC0C4F1FBA51EE1D667 /* Report+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22447B00BBC108F56EBB60C0 /* Report+Schema.swift */; };
+		DE90BBAC1ED5592400E340BB /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB44D8B4B5B69FFA98EF550 /* AmplifyModels.swift */; };
+		E78EB1142A4A5E1D001EC080 /* SafeWalkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB1132A4A5E1D001EC080 /* SafeWalkApp.swift */; };
+		E78EB1162A4A5E1D001EC080 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB1152A4A5E1D001EC080 /* ContentView.swift */; };
+		E78EB1182A4A5E1E001EC080 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78EB1172A4A5E1E001EC080 /* Assets.xcassets */; };
+		E78EB11B2A4A5E1E001EC080 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78EB11A2A4A5E1E001EC080 /* Preview Assets.xcassets */; };
+		E78EB1252A4A5E1F001EC080 /* SafeWalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB1242A4A5E1F001EC080 /* SafeWalkTests.swift */; };
+		E78EB12F2A4A5E1F001EC080 /* SafeWalkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB12E2A4A5E1F001EC080 /* SafeWalkUITests.swift */; };
+		E78EB1312A4A5E1F001EC080 /* SafeWalkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB1302A4A5E1F001EC080 /* SafeWalkUITestsLaunchTests.swift */; };
+		E78EB13E2A4A600C001EC080 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB13D2A4A600C001EC080 /* LocationManager.swift */; };
+		E78EB13F2A4A600C001EC080 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB13D2A4A600C001EC080 /* LocationManager.swift */; };
+		E78EB1402A4A600C001EC080 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EB13D2A4A600C001EC080 /* LocationManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E78EB1212A4A5E1F001EC080 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E78EB1082A4A5E1D001EC080 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E78EB10F2A4A5E1D001EC080;
+			remoteInfo = SafeWalk;
+		};
+		E78EB12B2A4A5E1F001EC080 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E78EB1082A4A5E1D001EC080 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E78EB10F2A4A5E1D001EC080;
+			remoteInfo = SafeWalk;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		227FD3062A4BD1950026450C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		22179CA62A76D36C00F5EC29 /* SafeWalk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SafeWalk.entitlements; sourceTree = "<group>"; };
+		22179CA72A76D38300F5EC29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		22179CA82A76D41900F5EC29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		22447B00BBC108F56EBB60C0 /* Report+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Report+Schema.swift"; path = "amplify/generated/models/Report+Schema.swift"; sourceTree = "<group>"; };
+		2255E5E92A6466B400B3B671 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		2255E5EB2A6466B400B3B671 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		227FD3072A4D1CB00026450C /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		227FD3092A50FC980026450C /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		22ED18502AA3B67C00C027FA /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
+		22ED18522AA43FB600C027FA /* UpdateReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateReportView.swift; sourceTree = "<group>"; };
+		22ED18542AA6442400C027FA /* BannerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModifier.swift; sourceTree = "<group>"; };
+		26075034310343C17896EC69 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		3345C350CE7D4BB59832C4A4 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		A5BC8C477D91745CDDE522B3 /* Report.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Report.swift; path = amplify/generated/models/Report.swift; sourceTree = "<group>"; };
+		CDB44D8B4B5B69FFA98EF550 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+		E78EB1102A4A5E1D001EC080 /* SafeWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E78EB1132A4A5E1D001EC080 /* SafeWalkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeWalkApp.swift; sourceTree = "<group>"; };
+		E78EB1152A4A5E1D001EC080 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E78EB1172A4A5E1E001EC080 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E78EB11A2A4A5E1E001EC080 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E78EB1202A4A5E1F001EC080 /* SafeWalkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SafeWalkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E78EB1242A4A5E1F001EC080 /* SafeWalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeWalkTests.swift; sourceTree = "<group>"; };
+		E78EB12A2A4A5E1F001EC080 /* SafeWalkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SafeWalkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E78EB12E2A4A5E1F001EC080 /* SafeWalkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeWalkUITests.swift; sourceTree = "<group>"; };
+		E78EB1302A4A5E1F001EC080 /* SafeWalkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeWalkUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E78EB13D2A4A600C001EC080 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E78EB10D2A4A5E1D001EC080 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22150E482A5CFB1400C417E1 /* Amplify in Frameworks */,
+				22150E3C2A5CFB1400C417E1 /* AWSLocationGeoPlugin in Frameworks */,
+				22150E442A5CFB1400C417E1 /* AWSPredictionsPlugin in Frameworks */,
+				22150E3E2A5CFB1400C417E1 /* AWSPinpointAnalyticsPlugin in Frameworks */,
+				22150E422A5CFB1400C417E1 /* AWSPluginsCore in Frameworks */,
+				22150E402A5CFB1400C417E1 /* AWSPinpointPushNotificationsPlugin in Frameworks */,
+				22150E382A5CFB1400C417E1 /* AWSAPIPlugin in Frameworks */,
+				22150E3A2A5CFB1400C417E1 /* AWSDataStorePlugin in Frameworks */,
+				22150E462A5CFB1400C417E1 /* AWSS3StoragePlugin in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E78EB11D2A4A5E1F001EC080 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E78EB1272A4A5E1F001EC080 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2255E5EA2A6466B400B3B671 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2255E5EB2A6466B400B3B671 /* MapViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		52C38BAF80728579645D4BEC /* AmplifyConfig */ = {
+			isa = PBXGroup;
+			children = (
+				26075034310343C17896EC69 /* awsconfiguration.json */,
+				3345C350CE7D4BB59832C4A4 /* amplifyconfiguration.json */,
+			);
+			name = AmplifyConfig;
+			sourceTree = "<group>";
+		};
+		B523BF2C4421C8CA35D1BF48 /* AmplifyModels */ = {
+			isa = PBXGroup;
+			children = (
+				CDB44D8B4B5B69FFA98EF550 /* AmplifyModels.swift */,
+				22447B00BBC108F56EBB60C0 /* Report+Schema.swift */,
+				A5BC8C477D91745CDDE522B3 /* Report.swift */,
+			);
+			name = AmplifyModels;
+			sourceTree = "<group>";
+		};
+		E78EB1072A4A5E1D001EC080 = {
+			isa = PBXGroup;
+			children = (
+				E78EB1122A4A5E1D001EC080 /* SafeWalk */,
+				E78EB1232A4A5E1F001EC080 /* SafeWalkTests */,
+				E78EB12D2A4A5E1F001EC080 /* SafeWalkUITests */,
+				E78EB1112A4A5E1D001EC080 /* Products */,
+				52C38BAF80728579645D4BEC /* AmplifyConfig */,
+				B523BF2C4421C8CA35D1BF48 /* AmplifyModels */,
+			);
+			sourceTree = "<group>";
+		};
+		E78EB1112A4A5E1D001EC080 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E78EB1102A4A5E1D001EC080 /* SafeWalk.app */,
+				E78EB1202A4A5E1F001EC080 /* SafeWalkTests.xctest */,
+				E78EB12A2A4A5E1F001EC080 /* SafeWalkUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E78EB1122A4A5E1D001EC080 /* SafeWalk */ = {
+			isa = PBXGroup;
+			children = (
+				22179CA82A76D41900F5EC29 /* AppDelegate.swift */,
+				22ED18542AA6442400C027FA /* BannerModifier.swift */,
+				22179CA72A76D38300F5EC29 /* Info.plist */,
+				22179CA62A76D36C00F5EC29 /* SafeWalk.entitlements */,
+				E78EB1132A4A5E1D001EC080 /* SafeWalkApp.swift */,
+				E78EB1152A4A5E1D001EC080 /* ContentView.swift */,
+				2255E5EA2A6466B400B3B671 /* Controllers */,
+				2255E5E92A6466B400B3B671 /* MapView.swift */,
+				22ED18502AA3B67C00C027FA /* AnnotationView.swift */,
+				22ED18522AA43FB600C027FA /* UpdateReportView.swift */,
+				227FD3072A4D1CB00026450C /* ReportView.swift */,
+				227FD3092A50FC980026450C /* NotificationView.swift */,
+				E78EB1172A4A5E1E001EC080 /* Assets.xcassets */,
+				E78EB1192A4A5E1E001EC080 /* Preview Content */,
+				E78EB13D2A4A600C001EC080 /* LocationManager.swift */,
+			);
+			path = SafeWalk;
+			sourceTree = "<group>";
+		};
+		E78EB1192A4A5E1E001EC080 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E78EB11A2A4A5E1E001EC080 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E78EB1232A4A5E1F001EC080 /* SafeWalkTests */ = {
+			isa = PBXGroup;
+			children = (
+				E78EB1242A4A5E1F001EC080 /* SafeWalkTests.swift */,
+			);
+			path = SafeWalkTests;
+			sourceTree = "<group>";
+		};
+		E78EB12D2A4A5E1F001EC080 /* SafeWalkUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E78EB12E2A4A5E1F001EC080 /* SafeWalkUITests.swift */,
+				E78EB1302A4A5E1F001EC080 /* SafeWalkUITestsLaunchTests.swift */,
+			);
+			path = SafeWalkUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E78EB10F2A4A5E1D001EC080 /* SafeWalk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E78EB1342A4A5E1F001EC080 /* Build configuration list for PBXNativeTarget "SafeWalk" */;
+			buildPhases = (
+				E78EB10C2A4A5E1D001EC080 /* Sources */,
+				E78EB10D2A4A5E1D001EC080 /* Frameworks */,
+				E78EB10E2A4A5E1D001EC080 /* Resources */,
+				227FD3062A4BD1950026450C /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SafeWalk;
+			packageProductDependencies = (
+				22150E372A5CFB1400C417E1 /* AWSAPIPlugin */,
+				22150E392A5CFB1400C417E1 /* AWSDataStorePlugin */,
+				22150E3B2A5CFB1400C417E1 /* AWSLocationGeoPlugin */,
+				22150E3D2A5CFB1400C417E1 /* AWSPinpointAnalyticsPlugin */,
+				22150E3F2A5CFB1400C417E1 /* AWSPinpointPushNotificationsPlugin */,
+				22150E412A5CFB1400C417E1 /* AWSPluginsCore */,
+				22150E432A5CFB1400C417E1 /* AWSPredictionsPlugin */,
+				22150E452A5CFB1400C417E1 /* AWSS3StoragePlugin */,
+				22150E472A5CFB1400C417E1 /* Amplify */,
+			);
+			productName = SafeWalk;
+			productReference = E78EB1102A4A5E1D001EC080 /* SafeWalk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E78EB11F2A4A5E1F001EC080 /* SafeWalkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E78EB1372A4A5E1F001EC080 /* Build configuration list for PBXNativeTarget "SafeWalkTests" */;
+			buildPhases = (
+				E78EB11C2A4A5E1F001EC080 /* Sources */,
+				E78EB11D2A4A5E1F001EC080 /* Frameworks */,
+				E78EB11E2A4A5E1F001EC080 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E78EB1222A4A5E1F001EC080 /* PBXTargetDependency */,
+			);
+			name = SafeWalkTests;
+			productName = SafeWalkTests;
+			productReference = E78EB1202A4A5E1F001EC080 /* SafeWalkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E78EB1292A4A5E1F001EC080 /* SafeWalkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E78EB13A2A4A5E1F001EC080 /* Build configuration list for PBXNativeTarget "SafeWalkUITests" */;
+			buildPhases = (
+				E78EB1262A4A5E1F001EC080 /* Sources */,
+				E78EB1272A4A5E1F001EC080 /* Frameworks */,
+				E78EB1282A4A5E1F001EC080 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E78EB12C2A4A5E1F001EC080 /* PBXTargetDependency */,
+			);
+			name = SafeWalkUITests;
+			productName = SafeWalkUITests;
+			productReference = E78EB12A2A4A5E1F001EC080 /* SafeWalkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E78EB1082A4A5E1D001EC080 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					E78EB10F2A4A5E1D001EC080 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					E78EB11F2A4A5E1F001EC080 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = E78EB10F2A4A5E1D001EC080;
+					};
+					E78EB1292A4A5E1F001EC080 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = E78EB10F2A4A5E1D001EC080;
+					};
+				};
+			};
+			buildConfigurationList = E78EB10B2A4A5E1D001EC080 /* Build configuration list for PBXProject "SafeWalk" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E78EB1072A4A5E1D001EC080;
+			packageReferences = (
+				22150E362A5CFB1400C417E1 /* XCRemoteSwiftPackageReference "amplify-swift" */,
+			);
+			productRefGroup = E78EB1112A4A5E1D001EC080 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E78EB10F2A4A5E1D001EC080 /* SafeWalk */,
+				E78EB11F2A4A5E1F001EC080 /* SafeWalkTests */,
+				E78EB1292A4A5E1F001EC080 /* SafeWalkUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E78EB10E2A4A5E1D001EC080 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E78EB11B2A4A5E1E001EC080 /* Preview Assets.xcassets in Resources */,
+				E78EB1182A4A5E1E001EC080 /* Assets.xcassets in Resources */,
+				8C69D96B3BE74AB7174EA2F4 /* awsconfiguration.json in Resources */,
+				1695C6EB62E806933DF2A97C /* amplifyconfiguration.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E78EB11E2A4A5E1F001EC080 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E78EB1282A4A5E1F001EC080 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E78EB10C2A4A5E1D001EC080 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22179CA92A76D41900F5EC29 /* AppDelegate.swift in Sources */,
+				22ED18512AA3B67C00C027FA /* AnnotationView.swift in Sources */,
+				E78EB1162A4A5E1D001EC080 /* ContentView.swift in Sources */,
+				E78EB1142A4A5E1D001EC080 /* SafeWalkApp.swift in Sources */,
+				22ED18552AA6442400C027FA /* BannerModifier.swift in Sources */,
+				227FD3082A4D1CB00026450C /* ReportView.swift in Sources */,
+				2255E5ED2A6466B400B3B671 /* MapViewController.swift in Sources */,
+				E78EB13E2A4A600C001EC080 /* LocationManager.swift in Sources */,
+				22ED18532AA43FB600C027FA /* UpdateReportView.swift in Sources */,
+				227FD30A2A50FC990026450C /* NotificationView.swift in Sources */,
+				DE90BBAC1ED5592400E340BB /* AmplifyModels.swift in Sources */,
+				DAB2CEC0C4F1FBA51EE1D667 /* Report+Schema.swift in Sources */,
+				2255E5EC2A6466B400B3B671 /* MapView.swift in Sources */,
+				B7CFA844CEC775E7F203B3CE /* Report.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E78EB11C2A4A5E1F001EC080 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E78EB13F2A4A600C001EC080 /* LocationManager.swift in Sources */,
+				E78EB1252A4A5E1F001EC080 /* SafeWalkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E78EB1262A4A5E1F001EC080 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E78EB1312A4A5E1F001EC080 /* SafeWalkUITestsLaunchTests.swift in Sources */,
+				E78EB12F2A4A5E1F001EC080 /* SafeWalkUITests.swift in Sources */,
+				E78EB1402A4A600C001EC080 /* LocationManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E78EB1222A4A5E1F001EC080 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E78EB10F2A4A5E1D001EC080 /* SafeWalk */;
+			targetProxy = E78EB1212A4A5E1F001EC080 /* PBXContainerItemProxy */;
+		};
+		E78EB12C2A4A5E1F001EC080 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E78EB10F2A4A5E1D001EC080 /* SafeWalk */;
+			targetProxy = E78EB12B2A4A5E1F001EC080 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E78EB1322A4A5E1F001EC080 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E78EB1332A4A5E1F001EC080 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E78EB1352A4A5E1F001EC080 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SafeWalk/SafeWalk.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SafeWalk/Preview Content\"";
+				DEVELOPMENT_TEAM = BFWG73R2SW;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SafeWalk/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please allow use to access your location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please allow use to access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow use to access your location";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "Tokan-Ideas.SafeWalk";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E78EB1362A4A5E1F001EC080 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SafeWalk/SafeWalk.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SafeWalk/Preview Content\"";
+				DEVELOPMENT_TEAM = BFWG73R2SW;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SafeWalk/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please allow use to access your location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please allow use to access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow use to access your location";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "Tokan-Ideas.SafeWalk";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E78EB1382A4A5E1F001EC080 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BFWG73R2SW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Tokan-Ideas.SafeWalkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SafeWalk.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SafeWalk";
+			};
+			name = Debug;
+		};
+		E78EB1392A4A5E1F001EC080 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BFWG73R2SW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Tokan-Ideas.SafeWalkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SafeWalk.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SafeWalk";
+			};
+			name = Release;
+		};
+		E78EB13B2A4A5E1F001EC080 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BFWG73R2SW;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Tokan-Ideas.SafeWalkUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SafeWalk;
+			};
+			name = Debug;
+		};
+		E78EB13C2A4A5E1F001EC080 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 97Q6A7WR49;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Tokan-Ideas.SafeWalkUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SafeWalk;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E78EB10B2A4A5E1D001EC080 /* Build configuration list for PBXProject "SafeWalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E78EB1322A4A5E1F001EC080 /* Debug */,
+				E78EB1332A4A5E1F001EC080 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E78EB1342A4A5E1F001EC080 /* Build configuration list for PBXNativeTarget "SafeWalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E78EB1352A4A5E1F001EC080 /* Debug */,
+				E78EB1362A4A5E1F001EC080 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E78EB1372A4A5E1F001EC080 /* Build configuration list for PBXNativeTarget "SafeWalkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E78EB1382A4A5E1F001EC080 /* Debug */,
+				E78EB1392A4A5E1F001EC080 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E78EB13A2A4A5E1F001EC080 /* Build configuration list for PBXNativeTarget "SafeWalkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E78EB13B2A4A5E1F001EC080 /* Debug */,
+				E78EB13C2A4A5E1F001EC080 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		22150E362A5CFB1400C417E1 /* XCRemoteSwiftPackageReference "amplify-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-swift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		22150E372A5CFB1400C417E1 /* AWSAPIPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22150E362A5CFB1400C417E1 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSAPIPlugin;
+		};
+		22150E392A5CFB1400C417E1 /* AWSDataStorePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22150E362A5CFB1400C417E1 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSDataStorePlugin;
+		};
+		22150E3B2A5CFB1400C417E1 /* AWSLocationGeoPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22150E362A5CFB1400C417E1 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSLocationGeoPlugin;
+		};
+		22150E3D2A5CFB1400C417E1 /* AWSPinpointAnalyticsPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22150E362A5CFB1400C417E1 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSPinpointAnalyticsPlugin;
+		};
+		22150E3F2A5CFB1400C417E1 /* AWSPinpointPushNotificationsPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22150E362A5CFB1400C417E1 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSPinpointPushNotificationsPlugin;
+		};
+		22150E412A5CFB1400C417E1 /* AWSPluginsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22150E362A5CFB1400C417E1 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSPluginsCore;
+		};
+		22150E432A5CFB1400C417E1 /* AWSPredictionsPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22150E362A5CFB1400C417E1 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSPredictionsPlugin;
+		};
+		22150E452A5CFB1400C417E1 /* AWSS3StoragePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22150E362A5CFB1400C417E1 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSS3StoragePlugin;
+		};
+		22150E472A5CFB1400C417E1 /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22150E362A5CFB1400C417E1 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = Amplify;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = E78EB1082A4A5E1D001EC080 /* Project object */;
+}

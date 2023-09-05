@@ -1,13 +1,10 @@
 {
-<<<<<<< HEAD
-=======
   "analytics": {
     "safewalk": {
       "providerPlugin": "awscloudformation",
       "service": "Pinpoint"
     }
   },
->>>>>>> 4fee13bcb63467655a99217113be2394c2472e68
   "api": {
     "SafeWalk": {
       "dependsOn": [],
@@ -30,8 +27,6 @@
       "providerPlugin": "awscloudformation",
       "service": "AppSync"
     }
-<<<<<<< HEAD
-=======
   },
   "auth": {
     "safewalk": {
@@ -108,6 +103,5 @@
         }
       ]
     }
->>>>>>> 4fee13bcb63467655a99217113be2394c2472e68
   }
 }

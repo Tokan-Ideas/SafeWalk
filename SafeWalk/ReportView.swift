@@ -263,10 +263,10 @@ struct ReportView: View {
             
         })
         .padding()
-
-    }
-
         .banner(data: $bannerData, show: $showBanner)
+    
+
+        
     }
     
     

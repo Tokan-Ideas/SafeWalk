@@ -26,7 +26,8 @@ extension Report {
       rule(allow: .public, operations: [.create, .update, .delete, .read])
     ]
     
-    model.pluralName = "Reports"
+    model.listPluralName = "Reports"
+    model.syncPluralName = "Reports"
     
     model.attributes(
       .primaryKey(fields: [report.id])

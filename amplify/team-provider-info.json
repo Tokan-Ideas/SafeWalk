@@ -10,6 +10,25 @@
       "StackName": "amplify-safewalk-staging-14416",
       "StackId": "arn:aws:cloudformation:us-east-1:629686010206:stack/amplify-safewalk-staging-14416/725ffd80-1f8c-11ee-942d-12558160ed75",
       "AmplifyAppId": "dh9ur67q4gtxy"
+    },
+    "categories": {
+      "analytics": {
+        "Pinpoint": {
+          "Name": "safewalk-staging",
+          "Id": "19539941c697489ebc1d6dfd97e42b42",
+          "Region": "us-east-1"
+        }
+      },
+      "notifications": {
+        "Pinpoint": {
+          "Name": "safewalk-staging",
+          "Id": "19539941c697489ebc1d6dfd97e42b42",
+          "Region": "us-east-1"
+        }
+      },
+      "auth": {
+        "safewalk": {}
+      }
     }
   }
 }

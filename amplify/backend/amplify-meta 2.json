@@ -1,0 +1,117 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-safewalk-staging-14416-authRole",
+      "UnauthRoleArn": "arn:aws:iam::629686010206:role/amplify-safewalk-staging-14416-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::629686010206:role/amplify-safewalk-staging-14416-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-safewalk-staging-14416-deployment",
+      "UnauthRoleName": "amplify-safewalk-staging-14416-unauthRole",
+      "StackName": "amplify-safewalk-staging-14416",
+      "StackId": "arn:aws:cloudformation:us-east-1:629686010206:stack/amplify-safewalk-staging-14416/725ffd80-1f8c-11ee-942d-12558160ed75",
+      "AmplifyAppId": "dh9ur67q4gtxy"
+    }
+  },
+  "analytics": {
+    "safewalk": {
+      "providerPlugin": "awscloudformation",
+      "service": "Pinpoint",
+      "output": {
+        "appName": "safewalk-staging",
+        "Region": "us-east-1",
+        "Id": "19539941c697489ebc1d6dfd97e42b42"
+      },
+      "lastPushTimeStamp": "2023-09-04T18:29:59.937Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-safewalk-staging-14416-deployment/amplify-cfn-templates/analytics/pinpoint-cloudformation-template.json",
+        "logicalId": "analyticssafewalk"
+      }
+    }
+  },
+  "api": {
+    "SafeWalk": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            }
+          }
+        },
+        "GraphQLAPIIdOutput": "ywjo25j3zje5fgazwi45fbwjni",
+        "GraphQLAPIEndpointOutput": "https://thmpyfhhmvcopnndii3fm66yay.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-xi75twkd4jcublszlrm3cnf2oy"
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync",
+      "lastPushTimeStamp": "2023-09-04T18:29:59.939Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-safewalk-staging-14416-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiSafeWalk"
+      },
+      "lastPushDirHash": "ZrZLvI41c0O25NMdhlos1FDyeEU="
+    }
+  },
+  "auth": {
+    "safewalk": {
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaTypes": [],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": []
+        },
+        "signupAttributes": [],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": []
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "managed",
+      "output": {
+        "IdentityPoolId": "us-east-1:8067e4bf-90a6-4a32-a162-dcee245aa012",
+        "IdentityPoolName": "safewalk_identitypool_f4e016fe__staging"
+      },
+      "lastPushTimeStamp": "2023-09-04T18:29:59.939Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-safewalk-staging-14416-deployment/amplify-cfn-templates/auth/safewalk-cloudformation-template.json",
+        "logicalId": "authsafewalk"
+      }
+    }
+  },
+  "notifications": {
+    "safewalk": {
+      "Id": "19539941c697489ebc1d6dfd97e42b42",
+      "ResourceName": "safewalk",
+      "Name": "safewalk-staging",
+      "service": "Pinpoint",
+      "output": {
+        "Id": "19539941c697489ebc1d6dfd97e42b42",
+        "Name": "safewalk-staging",
+        "Region": "us-east-1",
+        "APNS": {
+          "ApplicationId": "19539941c697489ebc1d6dfd97e42b42",
+          "CreationDate": "2023-07-30T18:20:48.378Z",
+          "DefaultAuthenticationMethod": "Certificate",
+          "Enabled": true,
+          "HasCredential": true,
+          "HasTokenKey": false,
+          "Id": "apns",
+          "IsArchived": false,
+          "LastModifiedDate": "2023-07-30T18:20:48.378Z",
+          "Platform": "APNS",
+          "Version": 1
+        },
+        "regulatedResourceName": "safewalk"
+      }
+    }
+  }
+}

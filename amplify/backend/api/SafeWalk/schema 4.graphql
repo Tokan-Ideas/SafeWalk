@@ -1,0 +1,9 @@
+type Report @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  lastUpdatedByPhoneId: String
+  reportType: String
+  latitude: String
+  longitude: String
+  timeStamp: String
+  negatedCounter: Int
+} 

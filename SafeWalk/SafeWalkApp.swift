@@ -15,6 +15,7 @@ import AWSPinpointPushNotificationsPlugin
 @main
 struct SafeWalkApp: App {
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+    @StateObject var locationManager = LocationManager()
     
     var body: some Scene {
         WindowGroup {
@@ -24,6 +25,9 @@ struct SafeWalkApp: App {
     
     init() {
         Task {
+            LocationManager.shared.requestLocation() { location in
+                LocationManager.shared.lastKnownLocation = location                
+            }
             let hubEventSubscriber = Amplify.Hub.publisher(for: .dataStore).sink { event in
                 if event.eventName == HubPayload.EventName.DataStore.networkStatus {
                     guard let networkStatus = event.data as? NetworkStatusEvent else {

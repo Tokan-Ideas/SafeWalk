@@ -19,15 +19,19 @@ struct ContentView: View {
     var body: some View {
 
         MapView()
-            .environmentObject(locationManager)
             .onAppear(perform: {
+                LocationManager.shared.requestLocation() { location in
+                    LocationManager.shared.lastKnownLocation = location
+                    locationManager.lastKnownLocation = location
+                    
+                }
                 Task {
                     Task {
                         do {
                             try await Amplify.DataStore.clear()
-                            print("Local data cleared successfully.")
+//                            print("Local data cleared successfully.")
                         } catch {
-                            print("Local data not cleared \(error)")
+//                            print("Local data not cleared \(error)")
                         }
                     }
                     LocationManager.shared.requestLocation() { location in
@@ -36,9 +40,9 @@ struct ContentView: View {
                         
                     }
                 }
-                
-                print(LocationManager.shared.lastKnownLocation)
+
             })
+            .environmentObject(locationManager)
     }
 }
 

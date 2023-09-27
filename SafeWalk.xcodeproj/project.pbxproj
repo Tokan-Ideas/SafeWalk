@@ -18,6 +18,9 @@
 		22150E462A5CFB1400C417E1 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 22150E452A5CFB1400C417E1 /* AWSS3StoragePlugin */; };
 		22150E482A5CFB1400C417E1 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 22150E472A5CFB1400C417E1 /* Amplify */; };
 		22179CA92A76D41900F5EC29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22179CA82A76D41900F5EC29 /* AppDelegate.swift */; };
+		224047492ABB468F00E7D22A /* ModernMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224047482ABB468F00E7D22A /* ModernMapView.swift */; };
+		2240474A2ABB468F00E7D22A /* ModernMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224047482ABB468F00E7D22A /* ModernMapView.swift */; };
+		2240474B2ABB468F00E7D22A /* ModernMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224047482ABB468F00E7D22A /* ModernMapView.swift */; };
 		2255E5EC2A6466B400B3B671 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2255E5E92A6466B400B3B671 /* MapView.swift */; };
 		2255E5ED2A6466B400B3B671 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2255E5EB2A6466B400B3B671 /* MapViewController.swift */; };
 		227FD3082A4D1CB00026450C /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FD3072A4D1CB00026450C /* ReportView.swift */; };
@@ -75,6 +78,7 @@
 		22179CA62A76D36C00F5EC29 /* SafeWalk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SafeWalk.entitlements; sourceTree = "<group>"; };
 		22179CA72A76D38300F5EC29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		22179CA82A76D41900F5EC29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		224047482ABB468F00E7D22A /* ModernMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernMapView.swift; sourceTree = "<group>"; };
 		22447B00BBC108F56EBB60C0 /* Report+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Report+Schema.swift"; path = "amplify/generated/models/Report+Schema.swift"; sourceTree = "<group>"; };
 		2255E5E92A6466B400B3B671 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		2255E5EB2A6466B400B3B671 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				22179CA62A76D36C00F5EC29 /* SafeWalk.entitlements */,
 				E78EB1132A4A5E1D001EC080 /* SafeWalkApp.swift */,
 				E78EB1152A4A5E1D001EC080 /* ContentView.swift */,
+				224047482ABB468F00E7D22A /* ModernMapView.swift */,
 				2255E5EA2A6466B400B3B671 /* Controllers */,
 				2255E5E92A6466B400B3B671 /* MapView.swift */,
 				22ED18502AA3B67C00C027FA /* AnnotationView.swift */,
@@ -385,6 +390,7 @@
 				227FD3082A4D1CB00026450C /* ReportView.swift in Sources */,
 				2255E5ED2A6466B400B3B671 /* MapViewController.swift in Sources */,
 				E78EB13E2A4A600C001EC080 /* LocationManager.swift in Sources */,
+				224047492ABB468F00E7D22A /* ModernMapView.swift in Sources */,
 				22ED18532AA43FB600C027FA /* UpdateReportView.swift in Sources */,
 				227FD30A2A50FC990026450C /* NotificationView.swift in Sources */,
 				DE90BBAC1ED5592400E340BB /* AmplifyModels.swift in Sources */,
@@ -400,6 +406,7 @@
 			files = (
 				E78EB13F2A4A600C001EC080 /* LocationManager.swift in Sources */,
 				E78EB1252A4A5E1F001EC080 /* SafeWalkTests.swift in Sources */,
+				2240474A2ABB468F00E7D22A /* ModernMapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2240474B2ABB468F00E7D22A /* ModernMapView.swift in Sources */,
 				E78EB1312A4A5E1F001EC080 /* SafeWalkUITestsLaunchTests.swift in Sources */,
 				E78EB12F2A4A5E1F001EC080 /* SafeWalkUITests.swift in Sources */,
 				E78EB1402A4A600C001EC080 /* LocationManager.swift in Sources */,

@@ -110,6 +110,7 @@ struct MapView: View {
                                 
                         }
                         .buttonBorderShape(.capsule)
+                        
                     }
                     .padding()
                 }

@@ -18,8 +18,9 @@ struct ContentView: View {
 
     var body: some View {
 
-        MapView()
-            .onAppear(perform: {
+        if #available(iOS 17.0, *) {
+            ModernMapView()
+                .onAppear(perform: {
                 LocationManager.shared.requestLocation() { location in
                     LocationManager.shared.lastKnownLocation = location
                     locationManager.lastKnownLocation = location
@@ -29,9 +30,9 @@ struct ContentView: View {
                     Task {
                         do {
                             try await Amplify.DataStore.clear()
-//                            print("Local data cleared successfully.")
+                            //                            print("Local data cleared successfully.")
                         } catch {
-//                            print("Local data not cleared \(error)")
+                            //                            print("Local data not cleared \(error)")
                         }
                     }
                     LocationManager.shared.requestLocation() { location in
@@ -40,9 +41,37 @@ struct ContentView: View {
                         
                     }
                 }
-
+                
             })
             .environmentObject(locationManager)
+        } else {
+            
+            MapView()
+                .onAppear(perform: {
+                    LocationManager.shared.requestLocation() { location in
+                        LocationManager.shared.lastKnownLocation = location
+                        locationManager.lastKnownLocation = location
+                        
+                    }
+                    Task {
+                        Task {
+                            do {
+                                try await Amplify.DataStore.clear()
+                                //                            print("Local data cleared successfully.")
+                            } catch {
+                                //                            print("Local data not cleared \(error)")
+                            }
+                        }
+                        LocationManager.shared.requestLocation() { location in
+                            LocationManager.shared.lastKnownLocation = location
+                            locationManager.lastKnownLocation = location
+                            
+                        }
+                    }
+                    
+                })
+                .environmentObject(locationManager)
+        }
     }
 }
 
@@ -60,8 +89,8 @@ struct SuspiciousActivityAlert: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

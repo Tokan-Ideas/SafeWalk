@@ -37,8 +37,13 @@ struct ReportView: View {
                     var exists  = false
                     self.reports?.forEach({ report in
                         if (report.reportType=="Police") {
-                            exists = true
-                            showBanner = true
+                            guard let lat = report.latitude else {return;}
+                            guard let long = report.longitude else {return;}
+                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                                exists = true
+                                showBanner = true
+                            }
+                            
                         }
                             
                     })
@@ -80,8 +85,12 @@ struct ReportView: View {
                     var exists  = false
                     self.reports?.forEach({ report in
                         if (report.reportType=="NoLights") {
-                            exists = true
-                            showBanner = true
+                            guard let lat = report.latitude else {return;}
+                            guard let long = report.longitude else {return;}
+                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                                exists = true
+                                showBanner = true
+                            }
                         }
                             
                     })
@@ -128,8 +137,12 @@ struct ReportView: View {
                     var exists  = false
                     self.reports?.forEach({ report in
                         if (report.reportType=="SuspiciousActivity") {
-                            exists = true
-                            showBanner = true
+                            guard let lat = report.latitude else {return;}
+                            guard let long = report.longitude else {return;}
+                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                                exists = true
+                                showBanner = true
+                            }
                         }
                             
                     })
@@ -170,8 +183,12 @@ struct ReportView: View {
                     var exists  = false
                     self.reports?.forEach({ report in
                         if (report.reportType=="Construction") {
-                            exists = true
-                            showBanner = true
+                            guard let lat = report.latitude else {return;}
+                            guard let long = report.longitude else {return;}
+                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                                exists = true
+                                showBanner = true
+                            }
                         }
                             
                     })
@@ -217,8 +234,12 @@ struct ReportView: View {
                     var exists  = false
                     self.reports?.forEach({ report in
                         if (report.reportType=="FootTraffic") {
-                            exists = true
-                            showBanner = true
+                            guard let lat = report.latitude else {return;}
+                            guard let long = report.longitude else {return;}
+                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                                exists = true
+                                showBanner = true
+                            }
                         }
                             
                     })
@@ -275,8 +296,8 @@ struct ReportView: View {
         Amplify.Publisher.create(
             Amplify.DataStore.observeQuery(
                 for: Report.self,
-                where: reports.longitude > coordinate.longitude + 0.01 && reports.longitude < coordinate.longitude - 0.01
-                && reports.latitude < coordinate.latitude + 0.01 && reports.latitude > coordinate.latitude - 0.01
+                where: reports.longitude > coordinate.longitude + 0.005 && reports.longitude < coordinate.longitude - 0.005
+                && reports.latitude < coordinate.latitude + 0.005 && reports.latitude > coordinate.latitude - 0.005
                 && reports.negatedCounter < 2
             )
         )

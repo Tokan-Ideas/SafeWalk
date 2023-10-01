@@ -1,0 +1,54 @@
+{
+    "UserAgent": "aws-amplify/cli",
+    "Version": "0.1.0",
+    "IdentityManager": {
+        "Default": {}
+    },
+    "PinpointAnalytics": {
+        "Default": {
+            "AppId": "19539941c697489ebc1d6dfd97e42b42",
+            "Region": "us-east-1"
+        }
+    },
+    "PinpointTargeting": {
+        "Default": {
+            "Region": "us-east-1"
+        }
+    },
+    "AppSync": {
+        "Default": {
+            "ApiUrl": "https://thmpyfhhmvcopnndii3fm66yay.appsync-api.us-east-1.amazonaws.com/graphql",
+            "Region": "us-east-1",
+            "AuthMode": "API_KEY",
+            "ApiKey": "da2-xi75twkd4jcublszlrm3cnf2oy",
+            "ClientDatabasePrefix": "SafeWalk_API_KEY"
+        },
+        "SafeWalk_AWS_IAM": {
+            "ApiUrl": "https://thmpyfhhmvcopnndii3fm66yay.appsync-api.us-east-1.amazonaws.com/graphql",
+            "Region": "us-east-1",
+            "AuthMode": "AWS_IAM",
+            "ClientDatabasePrefix": "SafeWalk_AWS_IAM"
+        }
+    },
+    "CredentialsProvider": {
+        "CognitoIdentity": {
+            "Default": {
+                "PoolId": "us-east-1:8067e4bf-90a6-4a32-a162-dcee245aa012",
+                "Region": "us-east-1"
+            }
+        }
+    },
+    "Auth": {
+        "Default": {
+            "authenticationFlowType": "USER_SRP_AUTH",
+            "mfaTypes": [],
+            "passwordProtectionSettings": {
+                "passwordPolicyCharacters": []
+            },
+            "signupAttributes": [],
+            "socialProviders": [],
+            "usernameAttributes": [],
+            "verificationMechanisms": []
+        }
+    }
+}

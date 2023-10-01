@@ -578,6 +578,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please allow use to access your location";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please allow use to access your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow use to access your location";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech Recoginition ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -615,6 +616,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please allow use to access your location";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please allow use to access your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow use to access your location";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech Recoginition ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

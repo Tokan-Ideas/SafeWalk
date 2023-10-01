@@ -172,6 +172,8 @@
 		E78EB1072A4A5E1D001EC080 = {
 			isa = PBXGroup;
 			children = (
+				225E14022AC9CD9A008BA488 /* amplifyconfiguration.json */,
+				225E14012AC9CD9A008BA488 /* awsconfiguration.json */,
 				E78EB1122A4A5E1D001EC080 /* SafeWalk */,
 				E78EB1232A4A5E1F001EC080 /* SafeWalkTests */,
 				E78EB12D2A4A5E1F001EC080 /* SafeWalkUITests */,
@@ -194,8 +196,6 @@
 		E78EB1122A4A5E1D001EC080 /* SafeWalk */ = {
 			isa = PBXGroup;
 			children = (
-				225E14022AC9CD9A008BA488 /* amplifyconfiguration.json */,
-				225E14012AC9CD9A008BA488 /* awsconfiguration.json */,
 				22179CA82A76D41900F5EC29 /* AppDelegate.swift */,
 				22ED18542AA6442400C027FA /* BannerModifier.swift */,
 				22179CA72A76D38300F5EC29 /* Info.plist */,

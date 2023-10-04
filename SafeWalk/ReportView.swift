@@ -33,13 +33,21 @@ struct ReportView: View {
             HStack(content: {
                 Spacer()
                 Button {
-
+//Report(id: "D4181B37-995F-47F5-9EF6-D56424D23B43", lastUpdatedByPhoneId: Optional("07F37803-5305-44D6-9A5A-48B3F29266BD"), reportType: Optional("Police"), latitude: Optional("40.727155"), longitude: Optional("-74.06269"), timeStamp: Optional("10/3/2023, 8:11 PM"), negatedCounter: Optional(1), createdAt: Optional(Amplify.Temporal.DateTime(foundationDate: 2023-10-04 00:11:33 +0000)), updatedAt: Optional(Amplify.Temporal.DateTime(foundationDate: 2023-10-04 00:22:38 +0000)))
+//               LONG     -74.06269
+//               LAT     40.727155
                     var exists  = false
                     self.reports?.forEach({ report in
-                        if (report.reportType=="Police") {
-                            guard let lat = report.latitude else {return;}
-                            guard let long = report.longitude else {return;}
-                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                        if (report.reportType=="Police" && report.negatedCounter!<2) {
+//                            print(report)
+                            guard let lat = report.latitude else {exists=true; return;}
+                            guard let long = report.longitude else {exists=true; return;}
+//                            print(CLLocationDegrees(long)!)
+//                            print(CLLocationDegrees(lat)!)
+//                            print(coordinates.longitude)
+//                            print(coordinates.latitude)
+//                            print((CLLocationDegrees(long)!  < coordinates.longitude + 0.005 && CLLocationDegrees(long)!  > coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005))
+                            if (CLLocationDegrees(long)!  < coordinates.longitude + 0.005 && CLLocationDegrees(long)!  > coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
                                 exists = true
                                 showBanner = true
                             }
@@ -87,7 +95,7 @@ struct ReportView: View {
                         if (report.reportType=="NoLights") {
                             guard let lat = report.latitude else {return;}
                             guard let long = report.longitude else {return;}
-                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                            if (CLLocationDegrees(long)!  < coordinates.longitude + 0.005 && CLLocationDegrees(long)!  > coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
                                 exists = true
                                 showBanner = true
                             }
@@ -139,7 +147,7 @@ struct ReportView: View {
                         if (report.reportType=="SuspiciousActivity") {
                             guard let lat = report.latitude else {return;}
                             guard let long = report.longitude else {return;}
-                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                            if (CLLocationDegrees(long)!  < coordinates.longitude + 0.005 && CLLocationDegrees(long)!  > coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
                                 exists = true
                                 showBanner = true
                             }
@@ -185,7 +193,7 @@ struct ReportView: View {
                         if (report.reportType=="Construction") {
                             guard let lat = report.latitude else {return;}
                             guard let long = report.longitude else {return;}
-                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                            if (CLLocationDegrees(long)!  < coordinates.longitude + 0.05 && CLLocationDegrees(long)!  > coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
                                 exists = true
                                 showBanner = true
                             }
@@ -236,7 +244,7 @@ struct ReportView: View {
                         if (report.reportType=="FootTraffic") {
                             guard let lat = report.latitude else {return;}
                             guard let long = report.longitude else {return;}
-                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                            if (CLLocationDegrees(long)!  < coordinates.longitude + 0.005 && CLLocationDegrees(long)!  > coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
                                 exists = true
                                 showBanner = true
                             }

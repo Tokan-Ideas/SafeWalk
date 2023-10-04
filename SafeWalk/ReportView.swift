@@ -33,13 +33,26 @@ struct ReportView: View {
             HStack(content: {
                 Spacer()
                 Button {
+//Report(id: "D4181B37-995F-47F5-9EF6-D56424D23B43", lastUpdatedByPhoneId: Optional("07F37803-5305-44D6-9A5A-48B3F29266BD"), reportType: Optional("Police"), latitude: Optional("40.727155"), longitude: Optional("-74.06269"), timeStamp: Optional("10/3/2023, 8:11 PM"), negatedCounter: Optional(1), createdAt: Optional(Amplify.Temporal.DateTime(foundationDate: 2023-10-04 00:11:33 +0000)), updatedAt: Optional(Amplify.Temporal.DateTime(foundationDate: 2023-10-04 00:22:38 +0000)))
+//               LONG     -74.06269
+//               LAT     40.727155
+                    // Work Cords: Optional(<+40.72780268,-74.03566148> +/- 35.00m (speed -1.00 mps / course -1.00) @ 10/4/23, 1:23:55 PM Eastern Daylight Time)
 
                     var exists  = false
+                    
+  
                     self.reports?.forEach({ report in
+                        print(report)
                         if (report.reportType=="Police") {
-                            guard let lat = report.latitude else {return;}
-                            guard let long = report.longitude else {return;}
-                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                            guard let lat = report.latitude else {exists=true; return;}
+                            guard let long = report.longitude else {exists=true; return;}
+//                            print(CLLocationDegrees(long)!)
+//                            print(CLLocationDegrees(lat)!)
+//                            print(coordinates.longitude)
+//                            print(coordinates.latitude)
+//                            print("FUCK")
+//                            print((CLLocationDegrees(long)!  < coordinates.longitude + 0.005 && CLLocationDegrees(long)!  > coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005))
+                            if (CLLocationDegrees(long)!  < coordinates.longitude + 0.001 && CLLocationDegrees(long)!  > coordinates.longitude - 0.001 && CLLocationDegrees(lat)! < coordinates.latitude + 0.001 && CLLocationDegrees(lat)! > coordinates.latitude - 0.001) {
                                 exists = true
                                 showBanner = true
                             }
@@ -50,6 +63,7 @@ struct ReportView: View {
 
                     
                     if (!exists) {
+//                        print("FUCK NO EXISTS")
                         let saveSink = Amplify.Publisher.create {
                             try await Amplify.DataStore.save(
                                 Report(lastUpdatedByPhoneId: UIDevice.current.identifierForVendor!.uuidString, reportType: "Police", latitude: LocationManager.shared.lastKnownLocation?.coordinate.latitude.formatted(), longitude: LocationManager.shared.lastKnownLocation?.coordinate.longitude.formatted(), timeStamp: Date.now.formatted(), negatedCounter: 0)
@@ -87,7 +101,7 @@ struct ReportView: View {
                         if (report.reportType=="NoLights") {
                             guard let lat = report.latitude else {return;}
                             guard let long = report.longitude else {return;}
-                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                            if (CLLocationDegrees(long)!  < coordinates.longitude + 0.001 && CLLocationDegrees(long)!  > coordinates.longitude - 0.001 && CLLocationDegrees(lat)! < coordinates.latitude + 0.001 && CLLocationDegrees(lat)! > coordinates.latitude - 0.001) {
                                 exists = true
                                 showBanner = true
                             }
@@ -139,7 +153,7 @@ struct ReportView: View {
                         if (report.reportType=="SuspiciousActivity") {
                             guard let lat = report.latitude else {return;}
                             guard let long = report.longitude else {return;}
-                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                            if (CLLocationDegrees(long)!  < coordinates.longitude + 0.001 && CLLocationDegrees(long)!  > coordinates.longitude - 0.001 && CLLocationDegrees(lat)! < coordinates.latitude + 0.001 && CLLocationDegrees(lat)! > coordinates.latitude - 0.001) {
                                 exists = true
                                 showBanner = true
                             }
@@ -185,7 +199,7 @@ struct ReportView: View {
                         if (report.reportType=="Construction") {
                             guard let lat = report.latitude else {return;}
                             guard let long = report.longitude else {return;}
-                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                            if (CLLocationDegrees(long)!  < coordinates.longitude + 0.001 && CLLocationDegrees(long)!  > coordinates.longitude - 0.001 && CLLocationDegrees(lat)! < coordinates.latitude + 0.001 && CLLocationDegrees(lat)! > coordinates.latitude - 0.001) {
                                 exists = true
                                 showBanner = true
                             }
@@ -236,7 +250,11 @@ struct ReportView: View {
                         if (report.reportType=="FootTraffic") {
                             guard let lat = report.latitude else {return;}
                             guard let long = report.longitude else {return;}
-                            if (CLLocationDegrees(long)!  > coordinates.longitude + 0.005 && CLLocationDegrees(long)!  < coordinates.longitude - 0.005 && CLLocationDegrees(lat)! < coordinates.latitude + 0.005 && CLLocationDegrees(lat)! > coordinates.latitude - 0.005) {
+                                                        print(CLLocationDegrees(long)!)
+                                                        print(CLLocationDegrees(lat)!)
+                                                        print(coordinates.longitude)
+                                                        print(coordinates.latitude)
+                            if (CLLocationDegrees(long)!  < coordinates.longitude + 0.001 && CLLocationDegrees(long)!  > coordinates.longitude - 0.001 && CLLocationDegrees(lat)! < coordinates.latitude + 0.001 && CLLocationDegrees(lat)! > coordinates.latitude - 0.001) {
                                 exists = true
                                 showBanner = true
                             }

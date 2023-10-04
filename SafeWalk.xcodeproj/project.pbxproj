@@ -155,6 +155,8 @@
 			children = (
 				26075034310343C17896EC69 /* awsconfiguration.json */,
 				3345C350CE7D4BB59832C4A4 /* amplifyconfiguration.json */,
+				225E14022AC9CD9A008BA488 /* amplifyconfiguration.json */,
+				225E14012AC9CD9A008BA488 /* awsconfiguration.json */,
 			);
 			name = AmplifyConfig;
 			sourceTree = "<group>";

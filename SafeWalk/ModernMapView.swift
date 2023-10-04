@@ -28,7 +28,7 @@ struct ModernMapView: View {
     @State private var mapSelection = MKMapItem?.self
     @State private var results = [MKMapItem]()
     var body: some View {
-        Map(initialPosition: .region(region)) {
+        Map(initialPosition: .region(region), interactionModes: [.pan, .zoom, .rotate]) {
             //UserAnnotation()
             
             
@@ -53,7 +53,7 @@ struct ModernMapView: View {
             }
         })
         .onAppear {
-            setRegion(location: region.center)
+//            setRegion(location: region.center)
             updateAnnotations(with: region.center, span: region.span)
         }
         .overlay(alignment: .bottomTrailing) {
@@ -61,12 +61,11 @@ struct ModernMapView: View {
                 Spacer()
                 Button("Report") {
                     showAddReport.toggle()
-                    print(locationManager.lastKnownLocation)
-                    print(region)
+//                    print(locationManager.lastKnownLocation)
+//                    print(region)
                 }
                 .fullScreenCover(isPresented: $showAddReport, content: {
-
-                    ReportView(coordinates: locationManager.lastKnownLocation?.coordinate ?? region.center, reports: self.reports)
+                    ReportView(coordinates: locationManager.lastKnownLocation!.coordinate, reports: self.reports)
                 })
                 .buttonStyle(.borderedProminent)
                 .buttonBorderShape(.capsule)
@@ -78,8 +77,10 @@ struct ModernMapView: View {
             MapUserLocationButton(scope: mapScope)
                 .controlSize(.extraLarge)
             MapCompass(scope: mapScope)
+            
+            
         }
-        .mapControlVisibility(.automatic)
+//        .mapControlVisibility(.)
         
 //        .overlay(alignment: .bottomTrailing) {
 //            MapUserLocationButton(scope: mapScope)

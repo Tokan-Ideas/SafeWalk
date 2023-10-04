@@ -61,11 +61,11 @@ struct ModernMapView: View {
                 Spacer()
                 Button("Report") {
                     showAddReport.toggle()
-                    print(locationManager.lastKnownLocation)
+//                    print(locationManager.lastKnownLocation)
 //                    print(region)
                 }
                 .fullScreenCover(isPresented: $showAddReport, content: {
-                    ReportView(coordinates: locationManager.lastKnownLocation!.coordinate)
+                    ReportView(coordinates: locationManager.lastKnownLocation!.coordinate, reports: self.reports)
                 })
                 .buttonStyle(.borderedProminent)
                 .buttonBorderShape(.capsule)

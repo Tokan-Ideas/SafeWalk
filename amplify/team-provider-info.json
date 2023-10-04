@@ -17,7 +17,8 @@
           "Name": "safewalk-staging",
           "Id": "19539941c697489ebc1d6dfd97e42b42",
           "Region": "us-east-1"
-        }
+        },
+        "safewalk": {}
       },
       "notifications": {
         "Pinpoint": {
@@ -28,6 +29,9 @@
       },
       "auth": {
         "safewalk": {}
+      },
+      "api": {
+        "SafeWalk": {}
       }
     }
   }

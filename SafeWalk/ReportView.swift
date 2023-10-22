@@ -25,7 +25,10 @@ struct ReportView: View {
     //@State private var isSheetPresented = false
     var body: some View {
         HStack(alignment: .center) {
-            Text("Update Map").font(.title).fontWeight(.heavy)
+            VStack(alignment: .center) {
+                Text("Add Report").font(.title).fontWeight(.heavy)
+                Text("See something new? Put it on the map.").font(.subheadline).fontWeight(.light)
+            }
         }
         
         VStack(alignment: .center, content: {

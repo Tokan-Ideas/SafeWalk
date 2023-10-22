@@ -75,19 +75,19 @@ struct ContentView: View {
     }
 }
 
-struct SuspiciousActivityAlert: View {
-    @EnvironmentObject private var locationManager: LocationManager
-    @State private var showAlert = false
-
-    var body: some View {
-        VStack {
-        }
-        .padding()
-        .alert(isPresented: $showAlert) {
-            Alert(title: Text("Suspicious Activity Reported"), message: Text("Please be cautious and confirm if the activity is still present."), dismissButton: .default(Text("OK")))
-        }
-    }
-}
+//struct SuspiciousActivityAlert: View {
+//    @EnvironmentObject private var locationManager: LocationManager
+//    @State private var showAlert = false
+//
+//    var body: some View {
+//        VStack {
+//        }
+//        .padding()
+//        .alert(isPresented: $showAlert) {
+//            Alert(title: Text("Suspicious Activity Reported"), message: Text("Please be cautious and confirm if the activity is still present."), dismissButton: .default(Text("OK")))
+//        }
+//    }
+//}
 
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {

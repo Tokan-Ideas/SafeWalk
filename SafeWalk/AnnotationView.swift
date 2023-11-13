@@ -17,18 +17,32 @@ struct ReportAnnotation: Identifiable {
     let report: Report
 }
 
+struct GenericMapAnnotation: Identifiable {
+    let id = UUID()
+    let annotationType: String
+    let reportType: String?
+    let reportId: String?
+    let coordinate: CLLocationCoordinate2D?
+    let report: Report?
+    let mapItem: MKMapItem?
+}
+
 
 struct AnnotationView: View {
     let reportType: String
     let reportId: String
     let coordinates: CLLocationCoordinate2D
     let report: Report
-
-    @State private var showUpdateReport = false
+    @Binding var showSelected: Bool
+    @State var showUpdateReport = false
+    @Binding var showSearch: Bool
+    
     var body: some View {
-        VStack {
+        
+        if #available(iOS 17.0, *) {
             Button {
                 showUpdateReport.toggle()
+                showSearch = false
             }
         label:
             {
@@ -39,17 +53,54 @@ struct AnnotationView: View {
             }
             .popover(isPresented: $showUpdateReport, content: {
                 UpdateReportView(reportType: reportType, reportId: reportId, coordinates: coordinates, report: report)
+                    .onAppear {
+                        showSelected = false
+                    }
+//                    .onDisappear {
+//                        showSearch = true
+//                    }
+
             })
             .buttonStyle(.automatic)
             .buttonBorderShape(.automatic)
+           
+        } else {
+            // Older Versions Options of Somethin
             
+            
+            
+            Button {
+                showUpdateReport.toggle()
+                showSearch = false
+            }
+        label:
+            {
+                Image(getReportImage(reportType: reportType))
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 30, height: 30, alignment: .center)
+            }
+            .sheet(isPresented: $showUpdateReport, content: {
+                UpdateReportView(reportType: reportType, reportId: reportId, coordinates: coordinates, report: report)
+                    .presentationDetents([ .large])
+                    .onAppear {
+                        showSelected = false
+                    }
+                //                    .onDisappear {
+                //                        showSearch = true
+                //                    }
+                
+            })
+            .buttonStyle(.automatic)
+            .buttonBorderShape(.automatic)
+        }
           
                 
 //          Image(systemName: "arrowtriangle.down.fill")
 //            .font(.caption)
 //            .foregroundColor(.red)
 //            .offset(x: 0, y: -5)
-        }
+        
 //        .onTapGesture(perform: {
 //            withAnimation(.default, {
 //
@@ -57,6 +108,9 @@ struct AnnotationView: View {
 //        })
       }
 }
+
+
+
 
 private func getReportImage(reportType: String) -> String {
     var ret: String = ""

@@ -11,7 +11,6 @@ import Amplify
 
 struct UpdateReportView: View {
     @Environment(\.dismiss) var dismiss
-    
     let reportType: String
     let reportId: String
     let coordinates: CLLocationCoordinate2D
@@ -77,12 +76,12 @@ struct UpdateReportView: View {
         }
     }
 }
-
-struct UpdateReportView_Previews: PreviewProvider {
-    static var previews: some View {
-        UpdateReportView(reportType: "NoLights", reportId: "1", coordinates: CLLocationCoordinate2D(latitude: CLLocationDegrees(37.785852), longitude: CLLocationDegrees(-122.406599)), report: nil)
-    }
-}
+//
+//struct UpdateReportView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UpdateReportView(reportType: "NoLights", reportId: "1", coordinates: CLLocationCoordinate2D(latitude: CLLocationDegrees(37.785852), longitude: CLLocationDegrees(-122.406599)), report: nil)
+//    }
+//}
 
 private func getReportType(reportType: String) -> String {
     var ret: String = ""

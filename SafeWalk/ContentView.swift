@@ -44,7 +44,7 @@ struct ContentView: View {
                 
             })
             .environmentObject(locationManager)
-        } else {
+        } else if #available(iOS 16.4, *){
             
             MapView()
                 .onAppear(perform: {
@@ -70,11 +70,11 @@ struct ContentView: View {
                     }
                     
                 })
-                .environmentObject(locationManager)
+                .environmentObject(LocationManager.shared)
         }
     }
 }
-
+//
 //struct SuspiciousActivityAlert: View {
 //    @EnvironmentObject private var locationManager: LocationManager
 //    @State private var showAlert = false

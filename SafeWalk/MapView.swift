@@ -12,11 +12,10 @@ import MapKit
 import Amplify
 import Combine
 
+@available(iOS 16.4, *)
 struct MapView: View {
-
-    
     @State var centerCoordinate: CLLocationCoordinate2D?
-    @State var annotations: [ReportAnnotation] = []
+    @State var annotations: [GenericMapAnnotation] = []
     @State var reports: [Report]?
     @EnvironmentObject private var locationManager: LocationManager
     @State var tracking: MapUserTrackingMode = .follow
@@ -24,6 +23,13 @@ struct MapView: View {
     @State private var showAddReport = false
     @State private var showAddNotification = false
     @State var reportSupscription: AnyCancellable?
+    @State private var overlaying = true
+    @State private var searchResults = [MKMapItem]()
+    @State private var mapSelection: MKMapItem?
+    @State private var showSelected = false
+    @State private var searchText = ""
+    @State private var getDirections = false
+    
     private var queue = DispatchQueue.global(qos: .background)//DispatchQueue(label: "Annotation Queue", qos: .background, autoreleaseFrequency: .inherit)
     
     var body: some View {
@@ -32,40 +38,108 @@ struct MapView: View {
         Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $tracking, annotationItems: annotations) {
             annotation in
             
-            MapAnnotation(coordinate: annotation.coordinate) {
-                AnnotationView(reportType: annotation.reportType, reportId: annotation.reportId, coordinates: annotation.coordinate, report: annotation.report)
-                    .onDisappear(){
-                        updateAnnotations(with: region.center, span: region.span)
-                    }
+            MapAnnotation(coordinate: annotation.coordinate!) {
+                if (annotation.annotationType == "Report") {
+                    
+                    AnnotationView(reportType: annotation.reportType!, reportId: annotation.reportId!, coordinates: annotation.coordinate!, report: annotation.report!, showSelected: $showSelected, showSearch: $overlaying)
+                        .frame(width: 30, height: 30)
+                } else {
+                        MapPinView(annotation: annotation, mapItem: annotation.mapItem!, coordinate: annotation.coordinate!)
+                            .frame(width: 30, height: 30)
+                            .onTapGesture {
+                                self.mapSelection = annotation.mapItem
+                                print("SELECTION SELECTED")
+                                self.showSelected = true
+                            }
+                }
                 
             }
+            
+    
         } // Add showsUserLocation parameter
+        .overlay(alignment: .topTrailing) {
+            HStack(alignment: .top) {
+                VStack(alignment: .trailing, spacing: 20) {
+                    Spacer()
+                    Button {
+                        print("Recenter")
+                        LocationManager.shared.requestLocation { location in
+                            setRegion(location: location)
+                            print(location)
+                        }
+                        setRegion(location: LocationManager.shared.lastKnownLocation)
+                        
+                    } label: {
+                        Image(systemName: "location.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 40, height: 40)
+                        
+                    }
+                    .buttonBorderShape(.capsule)
+                    .padding()
+                    
+                }
+                .padding(.top)
+            }
+            .frame(width: 40, height: 40)
+            .padding()
+        }
+        .sheet(isPresented: $showSelected) {
+            LocationDetailView(mapSelection: $mapSelection, show: $showSelected, getDirections: $getDirections)
+                .presentationDetents([.fraction(0.5)])
+                .presentationBackgroundInteraction(.enabled(upThrough: .fraction(0.5)))
+//                .onAppear {
+//                    self.overlaying = false
+//                }
+ 
+        }
+        .sheet(isPresented: $overlaying, content: {
+            MapOverlayView(searchResults: self.$searchResults, searchText: self.$searchText)
+                .presentationDetents([.fraction(0.1), .fraction(0.5), .large])
+                .presentationBackgroundInteraction(.enabled(upThrough: .fraction(0.5)))
+                .overlay(alignment: .topTrailing) {
+                    HStack() {
+                        Spacer()
+                        Button("Report") {
+                            showAddReport.toggle()
+        //                    print(locationManager.lastKnownLocation)
+        //                    print(region)
+                        }
+                        .fullScreenCover(isPresented: $showAddReport, content: {
+                            ReportView(coordinates: LocationManager.shared.lastKnownLocation!.coordinate, reports: self.reports)
+                        })
+                        .buttonStyle(.borderedProminent)
+                        .buttonBorderShape(.capsule)
+                        .controlSize(.large)
+                    }
+                    .padding(.top, 10)
+                    .padding(.trailing, 10)
+                }
+            
+//                .edgesIgnoringSafeArea(.all)
+          
+        })
                 .ignoresSafeArea(.all)
                 .onAppear {
                     updateAnnotations(with: region.center, span: region.span)
                     //print(LocationManager.shared.lastKnownLocation)
-                    
                     LocationManager.shared.requestLocation() { location in
                         setRegion(location: location)
-                        print(location)
-                        queue.async {
-                            updateAnnotations(with: region.center, span: region.span)
-                        }
+                        updateAnnotations(with: region.center, span: region.span)
                     }
                     setRegion(location: LocationManager.shared.lastKnownLocation)
                     
-                    
+                    self.showSelected = self.mapSelection != nil
+                    self.overlaying = !self.showSelected
                 }
                 .onChange(of: region) { newRegion in
                     let location = newRegion.center
-                    DispatchQueue.main.async {
-                        setRegion(location: location)
-                        queue.suspend()
-                        queue.asyncAfter(deadline: .now()+2){
-                            updateAnnotations(with: location, span: region.span)
-                        }
-                    }
-                    
+//                    self.overlaying = true
+                    setRegion(location: location)
+                    updateAnnotations(with: location, span: region.span)
+                    self.showSelected = self.mapSelection != nil && searchText != ""
+                    self.overlaying = !self.showSelected
                 
                     
                     //setRegion(location: location) // Update the region when the location changes
@@ -75,45 +149,23 @@ struct MapView: View {
 //                    setRegion(location: location)
 //                    updateAnnotations(with: location)
 //                }
-                .overlay(alignment: .topLeading) {
-                    HStack(spacing: 20) {
-                        Spacer()
-                        Button("Report") {
-                            showAddReport.toggle()
-                        }
-                        .fullScreenCover(isPresented: $showAddReport, content: {
-
-                            ReportView(coordinates: region.center, reports: self.reports)
-                        })
-                        .buttonStyle(.borderedProminent)
-                        .buttonBorderShape(.capsule)
-                        .controlSize(.large)
-                    }
-                    .padding()
-                }
-                .overlay(alignment: .bottomTrailing) {
-                    VStack(spacing: 20) {
-                        
-                        Button {
-                            print("Recenter")
-                            LocationManager.shared.requestLocation { location in
-                                setRegion(location: location)
-                                print(location)
-                            }
-                            setRegion(location: LocationManager.shared.lastKnownLocation)
-                           
-                        } label: {
-                            Image(systemName: "location.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 40, height: 40)
-                                
-                        }
-                        .buttonBorderShape(.capsule)
-                        
-                    }
-                    .padding()
-                }
+//                .overlay(alignment: .topLeading) {
+//                    HStack(spacing: 20) {
+//                        Spacer()
+//                        Button("Report") {
+//                            showAddReport.toggle()
+//                        }
+//                        .fullScreenCover(isPresented: $showAddReport, content: {
+//
+//                            ReportView(coordinates: region.center, reports: self.reports)
+//                        })
+//                        .buttonStyle(.borderedProminent)
+//                        .buttonBorderShape(.capsule)
+//                        .controlSize(.large)
+//                    }
+//                    .padding()
+//                }
+        
         
         
     }
@@ -123,6 +175,7 @@ struct MapView: View {
             // based on the new map center (coordinate)
             
             // For example, let's add a random annotation to demonstrate
+        print(self.searchResults)
             let reports = Report.keys
             let span2 = span.longitudeDelta * 2
             self.reportSupscription = Amplify.Publisher.create(
@@ -146,11 +199,12 @@ struct MapView: View {
 
 
                         //annote.$region = MKCoord
-                        let pin = ReportAnnotation(
+                        let pin = GenericMapAnnotation(
+                            annotationType: "Report",
                             reportType: report.reportType!,
                             reportId: report.id,
                             coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(Double(report.latitude!)!), longitude: CLLocationDegrees(Double(report.longitude!)!)),
-                            report: report
+                            report: report, mapItem: nil
                         )
     //                    pin.reportTye = report.reportType
     //                    pin.reportId = report.id
@@ -164,7 +218,15 @@ struct MapView: View {
                         self.annotations.append(pin)
                         
                     }
+                    
+                    
                     self.reports = querySnapshot.items
+                }
+                
+                for place in self.searchResults {
+                    let placemark = place.placemark
+                    let ant = GenericMapAnnotation(annotationType: "ResultPin", reportType: nil, reportId: nil, coordinate: placemark.coordinate, report: nil, mapItem: place)
+                    self.annotations.append(ant)
                 }
                 
                 //print(annotations)

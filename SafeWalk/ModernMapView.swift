@@ -21,28 +21,82 @@ struct ModernMapView: View {
     @State private var showAddReport = false
     @State private var showAddNotification = false
     @State var reportSupscription: AnyCancellable?
+    @State private var overlaying = true
+    @State private var searchResults = [MKMapItem]()
+    @State private var mapSelection: MKMapItem?
+    @State private var showSelected = false
+    @State private var searchText = ""
+    @State private var getDirections = false
+
+    
     private var queue = DispatchQueue.global(qos: .background)
     
     
     @Namespace var mapScope
-    @State private var mapSelection = MKMapItem?.self
-    @State private var results = [MKMapItem]()
+
     var body: some View {
-        Map(initialPosition: .region(region), interactionModes: [.pan, .zoom, .rotate]) {
+        Map(initialPosition: .region(region), interactionModes: [.pan, .zoom, .rotate], selection: $mapSelection) {
             //UserAnnotation()
             
             
             
             ForEach(annotations) { annotation in
                 Annotation("", coordinate: annotation.coordinate) {
-                    AnnotationView(reportType: annotation.reportType, reportId: annotation.reportId, coordinates: annotation.coordinate, report: annotation.report)
-                        .onDisappear(){
-                            updateAnnotations(with: region.center, span: region.span)
-                        }
+                    AnnotationView(reportType: annotation.reportType, reportId: annotation.reportId, coordinates: annotation.coordinate, report: annotation.report, showSelected: $showSelected, showSearch: $overlaying)
+//                        .onDisappear {
+//                            updateAnnotations(with: region.center, span: region.span)
+//                        }
                 }
             }
             
+            ForEach(searchResults, id: \.self) { place in
+                let placemark = place.placemark
+                Marker(placemark.name ?? "", coordinate: placemark.coordinate)
+            }
+            
             UserAnnotation()
+        }
+        .sheet(isPresented: $overlaying, content: {
+            MapOverlayView(searchResults: self.$searchResults, searchText: self.$searchText)
+                .presentationDetents([.fraction(0.1), .fraction(0.5), .large])
+                .presentationBackgroundInteraction(.enabled)
+//                .onAppear() {
+////                    print("MAP OVERLAY MAP OVERYLAY")
+////                    self.showSelected = false
+//                }
+//                .onDisappear(perform: {
+//                    overlaying = true
+//                })
+                .overlay(alignment: .topTrailing) {
+                    HStack() {
+                        Spacer()
+                        Button("Report") {
+                            showAddReport.toggle()
+        //                    print(locationManager.lastKnownLocation)
+        //                    print(region)
+                        }
+                        .fullScreenCover(isPresented: $showAddReport, content: {
+                            ReportView(coordinates: locationManager.lastKnownLocation!.coordinate, reports: self.reports)
+                        })
+                        .buttonStyle(.borderedProminent)
+                        .buttonBorderShape(.capsule)
+                        .controlSize(.large)
+                    }
+                    .padding(.top, 10)
+                    .padding(.trailing, 10)
+                }
+            
+//                .edgesIgnoringSafeArea(.all)
+          
+        })
+        .sheet(isPresented: $showSelected) {
+            LocationDetailView(mapSelection: $mapSelection, show: $showSelected, getDirections: $getDirections)
+                .presentationDetents([.fraction(0.5)])
+                .presentationBackgroundInteraction(.enabled(upThrough: .fraction(0.5)))
+//                .onAppear {
+//                    self.overlaying = false
+//                }
+ 
         }
         .onMapCameraChange({ context in
             setRegion(location: context.region.center)
@@ -51,35 +105,47 @@ struct ModernMapView: View {
                 locationManager.lastKnownLocation = loc
                 LocationManager.shared.lastKnownLocation = loc
             }
+//            print(mapSelection)
+            
+            self.showSelected = self.mapSelection != nil
+            self.overlaying = !self.showSelected
+            print("Show Selected: " + String(showSelected))
+            print("overlaying: " + String(overlaying))
         })
         .onAppear {
 //            setRegion(location: region.center)
             updateAnnotations(with: region.center, span: region.span)
+            self.showSelected = self.mapSelection != nil
+            self.overlaying = !self.showSelected
+//            self.persistentSystemOverlays(.visible)
         }
-        .overlay(alignment: .bottomTrailing) {
-            HStack(spacing: 20) {
-                Spacer()
-                Button("Report") {
-                    showAddReport.toggle()
-//                    print(locationManager.lastKnownLocation)
-//                    print(region)
-                }
-                .fullScreenCover(isPresented: $showAddReport, content: {
-                    ReportView(coordinates: locationManager.lastKnownLocation!.coordinate, reports: self.reports)
-                })
-                .buttonStyle(.borderedProminent)
-                .buttonBorderShape(.capsule)
-                .controlSize(.extraLarge)
-            }
-            .padding()
-        }
+//        .overlay(alignment: .bottomLeading) {
+//            HStack(spacing: 20) {
+//                Spacer()
+//                Button("Report") {
+//                    showAddReport.toggle()
+////                    print(locationManager.lastKnownLocation)
+////                    print(region)
+//                }
+//                .fullScreenCover(isPresented: $showAddReport, content: {
+//                    ReportView(coordinates: locationManager.lastKnownLocation!.coordinate, reports: self.reports)
+//                })
+//                .buttonStyle(.borderedProminent)
+//                .buttonBorderShape(.capsule)
+//                .controlSize(.extraLarge)
+//            }
+//            .padding()
+//        }
         .mapControls {
             MapUserLocationButton(scope: mapScope)
                 .controlSize(.extraLarge)
             MapCompass(scope: mapScope)
-            
-            
         }
+        .onChange(of: mapSelection) { oldValue, newValue in
+            self.showSelected = newValue != nil
+            self.overlaying = !self.showSelected
+        }
+
 //        .mapControlVisibility(.)
         
 //        .overlay(alignment: .bottomTrailing) {
@@ -134,7 +200,7 @@ struct ModernMapView: View {
             //print("RUN SHIT")
             // For example, let's add a random annotation to demonstrate
             let reports = Report.keys
-            let span2 = span.longitudeDelta * 2
+//            let span2 = span.longitudeDelta * 2
             self.reportSupscription = Amplify.Publisher.create(
                 Amplify.DataStore.observeQuery(
                     for: Report.self,

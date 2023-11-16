@@ -24,6 +24,11 @@
 		2255E5ED2A6466B400B3B671 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2255E5EB2A6466B400B3B671 /* MapViewController.swift */; };
 		225E14032AC9CD9A008BA488 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 225E14012AC9CD9A008BA488 /* awsconfiguration.json */; };
 		225E14042AC9CD9A008BA488 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 225E14022AC9CD9A008BA488 /* amplifyconfiguration.json */; };
+		22772F882AF0656100031985 /* MapOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22772F872AF0656100031985 /* MapOverlayView.swift */; };
+		22772F892AF0656100031985 /* MapOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22772F872AF0656100031985 /* MapOverlayView.swift */; };
+		22772F8C2AF3243200031985 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22772F8B2AF3243200031985 /* LocationDetailView.swift */; };
+		22772F8D2AF3243200031985 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22772F8B2AF3243200031985 /* LocationDetailView.swift */; };
+		22772F8F2B018C9600031985 /* MapPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22772F8E2B018C9600031985 /* MapPinView.swift */; };
 		227FD3082A4D1CB00026450C /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FD3072A4D1CB00026450C /* ReportView.swift */; };
 		227FD30A2A50FC990026450C /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FD3092A50FC980026450C /* NotificationView.swift */; };
 		22ED18512AA3B67C00C027FA /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED18502AA3B67C00C027FA /* AnnotationView.swift */; };
@@ -84,6 +89,9 @@
 		2255E5EB2A6466B400B3B671 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		225E14012AC9CD9A008BA488 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		225E14022AC9CD9A008BA488 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
+		22772F872AF0656100031985 /* MapOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOverlayView.swift; sourceTree = "<group>"; };
+		22772F8B2AF3243200031985 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
+		22772F8E2B018C9600031985 /* MapPinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPinView.swift; sourceTree = "<group>"; };
 		227FD3072A4D1CB00026450C /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		227FD3092A50FC980026450C /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		22ED18502AA3B67C00C027FA /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
@@ -201,9 +209,12 @@
 				E78EB1132A4A5E1D001EC080 /* SafeWalkApp.swift */,
 				E78EB1152A4A5E1D001EC080 /* ContentView.swift */,
 				224047482ABB468F00E7D22A /* ModernMapView.swift */,
+				22772F8B2AF3243200031985 /* LocationDetailView.swift */,
+				22772F872AF0656100031985 /* MapOverlayView.swift */,
 				2255E5EA2A6466B400B3B671 /* Controllers */,
 				2255E5E92A6466B400B3B671 /* MapView.swift */,
 				22ED18502AA3B67C00C027FA /* AnnotationView.swift */,
+				22772F8E2B018C9600031985 /* MapPinView.swift */,
 				22ED18522AA43FB600C027FA /* UpdateReportView.swift */,
 				227FD3072A4D1CB00026450C /* ReportView.swift */,
 				227FD3092A50FC980026450C /* NotificationView.swift */,
@@ -386,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22772F8C2AF3243200031985 /* LocationDetailView.swift in Sources */,
 				22179CA92A76D41900F5EC29 /* AppDelegate.swift in Sources */,
 				22ED18512AA3B67C00C027FA /* AnnotationView.swift in Sources */,
 				E78EB1162A4A5E1D001EC080 /* ContentView.swift in Sources */,
@@ -397,8 +409,10 @@
 				224047492ABB468F00E7D22A /* ModernMapView.swift in Sources */,
 				22ED18532AA43FB600C027FA /* UpdateReportView.swift in Sources */,
 				227FD30A2A50FC990026450C /* NotificationView.swift in Sources */,
+				22772F882AF0656100031985 /* MapOverlayView.swift in Sources */,
 				DE90BBAC1ED5592400E340BB /* AmplifyModels.swift in Sources */,
 				DAB2CEC0C4F1FBA51EE1D667 /* Report+Schema.swift in Sources */,
+				22772F8F2B018C9600031985 /* MapPinView.swift in Sources */,
 				2255E5EC2A6466B400B3B671 /* MapView.swift in Sources */,
 				B7CFA844CEC775E7F203B3CE /* Report.swift in Sources */,
 			);
@@ -411,6 +425,8 @@
 				E78EB13F2A4A600C001EC080 /* LocationManager.swift in Sources */,
 				E78EB1252A4A5E1F001EC080 /* SafeWalkTests.swift in Sources */,
 				2240474A2ABB468F00E7D22A /* ModernMapView.swift in Sources */,
+				22772F8D2AF3243200031985 /* LocationDetailView.swift in Sources */,
+				22772F892AF0656100031985 /* MapOverlayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +490,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.01;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -494,8 +510,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.01;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -539,7 +555,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.01;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -553,8 +569,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.01;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
